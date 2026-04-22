@@ -5,16 +5,18 @@
 
 This package brings the official [WHO Data Design
 Language](https://srhdteuwpubsa.z6.web.core.windows.net/gho/data/design-language/design-system/colors/)
-into R. Install it using:
+colours into R. Install it using:
 
 ``` r
 pak::pak("finlaycampbell/whopals")
 ```
 
-Palettes are exposed as `whopals::pal_*` functions. Use `theme` to
-choose a light or dark theme, `component` to specify the plot component
-such as text or base, and `variant` to select a palette variant where
-available. The available palettes are displayed below.
+Palettes are exposed as `whopals::pal_*` functions. Use the `theme`
+argument to specify a light or dark theme, `component` to specify the
+plot component such as text or base, and `variant` to select a palette
+variant where available. The available palettes are displayed below.
+
+------------------------------------------------------------------------
 
 **`pal_theme()`**
 
