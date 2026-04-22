@@ -18,10 +18,6 @@ variant where available. The available palettes are displayed below.
 
 ------------------------------------------------------------------------
 
-**`pal_theme()`**
-
-![](man/figures/README-pal-theme-1.png)<!-- -->
-
 **`pal_category()`**
 
 ![](man/figures/README-pal-category-1.png)<!-- -->
@@ -57,3 +53,7 @@ variant where available. The available palettes are displayed below.
 **`pal_trend()`**
 
 ![](man/figures/README-pal-trend-1.png)<!-- -->
+
+**`pal_theme()`**
+
+![](man/figures/README-pal-theme-1.png)<!-- -->

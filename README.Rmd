@@ -86,12 +86,6 @@ plot_pal <- function(x) {
 }
 ```
 
-**`pal_theme()`**
-
-```{r pal-theme, fig.height = 2.8}
-plot_pal(whopals::pal_theme("dark"))
-```
-
 **`pal_category()`**
 
 ```{r pal-category}
@@ -144,4 +138,10 @@ plot_pal(whopals::pal_gender("dark"))
 
 ```{r pal-trend}
 plot_pal(whopals::pal_trend(theme = "dark"))
+```
+
+**`pal_theme()`**
+
+```{r pal-theme, fig.height = 2.8}
+plot_pal(whopals::pal_theme("dark"))
 ```
