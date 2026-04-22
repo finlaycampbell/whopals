@@ -14,7 +14,8 @@ knitr::opts_chunk$set(
   message = FALSE,
   warning = FALSE,
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  dev.args = list(bg = "transparent")
 )
 dir.create("man/figures", recursive = TRUE, showWarnings = FALSE)
 ```
@@ -37,6 +38,7 @@ pak::pak("finlaycampbell/whopals")
 After installing, every palette is exposed as a `whopals::pal_*` function. Use `theme` to choose a light or dark theme, `component` to specify the plot component (e.g. base vs text), and `variant` to select a palette variant where available.
 
 ```{r plot-helper, include = FALSE}
+# README figures: dark design-language tokens on transparent canvas, white labels.
 plot_pal <- function(x, title) {
   lab <- names(x)
   if (is.null(lab)) {
@@ -58,20 +60,27 @@ plot_pal <- function(x, title) {
       axis.text.y = element_blank(),
       axis.ticks.y = element_blank(),
       panel.grid = element_blank(),
-      plot.title = element_text(face = "bold"),
-      axis.text.x = element_text(angle = 35, hjust = 1, vjust = 1)
+      plot.title = element_text(face = "bold", color = "white"),
+      axis.text.x = element_text(
+        angle = 35, hjust = 1, vjust = 1, color = "white"
+      ),
+      panel.background = element_rect(fill = "transparent", linewidth = 0),
+      plot.background = element_rect(fill = "transparent", color = NA),
+      panel.border = element_blank()
     )
 }
 ```
 
 ### Palettes
 
+Figures below use `theme = "dark"` for the underlying WHO tokens.
+
 **`pal_theme()`**
 
 * **theme**: light, dark
 
 ```{r pal-theme, fig.height = 2.8}
-plot_pal(whopals::pal_theme(), "whopals::pal_theme()")
+plot_pal(whopals::pal_theme("dark"), 'whopals::pal_theme(theme = "dark")')
 ```
 
 **`pal_category()`**
@@ -80,7 +89,10 @@ plot_pal(whopals::pal_theme(), "whopals::pal_theme()")
 * **theme**: light, dark
 
 ```{r pal-category}
-plot_pal(whopals::pal_category(), "whopals::pal_category()")
+plot_pal(
+  whopals::pal_category(theme = "dark"),
+  'whopals::pal_category(theme = "dark")'
+)
 ```
 
 **`pal_region()`**
@@ -89,7 +101,7 @@ plot_pal(whopals::pal_category(), "whopals::pal_category()")
 * **theme**: light, dark
 
 ```{r pal-region}
-plot_pal(whopals::pal_region(), "whopals::pal_region()")
+plot_pal(whopals::pal_region(theme = "dark"), 'whopals::pal_region(theme = "dark")')
 ```
 
 **`pal_sequential()`**
@@ -100,22 +112,22 @@ plot_pal(whopals::pal_region(), "whopals::pal_region()")
 
 ```{r pal-sequential-brand, fig.height = 2.2}
 plot_pal(
-  whopals::pal_sequential("brand"),
-  'whopals::pal_sequential(variant = "brand")'
+  whopals::pal_sequential("brand", theme = "dark"),
+  'whopals::pal_sequential(variant = "brand", theme = "dark")'
 )
 ```
 
 ```{r pal-sequential-complementary, fig.height = 2.2}
 plot_pal(
-  whopals::pal_sequential("complementary"),
-  'whopals::pal_sequential(variant = "complementary")'
+  whopals::pal_sequential("complementary", theme = "dark"),
+  'whopals::pal_sequential(variant = "complementary", theme = "dark")'
 )
 ```
 
 ```{r pal-sequential-colorful, fig.height = 2.2}
 plot_pal(
-  whopals::pal_sequential("colorful"),
-  'whopals::pal_sequential(variant = "colorful")'
+  whopals::pal_sequential("colorful", theme = "dark"),
+  'whopals::pal_sequential(variant = "colorful", theme = "dark")'
 )
 ```
 
@@ -125,7 +137,10 @@ plot_pal(
 * **theme**: light, dark
 
 ```{r pal-diverging}
-plot_pal(whopals::pal_diverging(), "whopals::pal_diverging()")
+plot_pal(
+  whopals::pal_diverging(theme = "dark"),
+  'whopals::pal_diverging(theme = "dark")'
+)
 ```
 
 **`pal_functional()`**
@@ -133,7 +148,10 @@ plot_pal(whopals::pal_diverging(), "whopals::pal_diverging()")
 * **theme**: light, dark
 
 ```{r pal-functional, fig.height = 3.2}
-plot_pal(whopals::pal_functional(), "whopals::pal_functional()")
+plot_pal(
+  whopals::pal_functional("dark"),
+  'whopals::pal_functional(theme = "dark")'
+)
 ```
 
 **`pal_gender()`**
@@ -141,7 +159,7 @@ plot_pal(whopals::pal_functional(), "whopals::pal_functional()")
 * **theme**: light, dark
 
 ```{r pal-gender}
-plot_pal(whopals::pal_gender(), "whopals::pal_gender()")
+plot_pal(whopals::pal_gender("dark"), 'whopals::pal_gender(theme = "dark")')
 ```
 
 **`pal_trend()`**
@@ -150,5 +168,5 @@ plot_pal(whopals::pal_gender(), "whopals::pal_gender()")
 * **theme**: light, dark
 
 ```{r pal-trend}
-plot_pal(whopals::pal_trend(), "whopals::pal_trend()")
+plot_pal(whopals::pal_trend(theme = "dark"), 'whopals::pal_trend(theme = "dark")')
 ```

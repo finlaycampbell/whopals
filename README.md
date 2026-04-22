@@ -23,6 +23,8 @@ a palette variant where available.
 
 ### Palettes
 
+Figures below use `theme = "dark"` for the underlying WHO tokens.
+
 **`pal_theme()`**
 
 - **theme**: light, dark
