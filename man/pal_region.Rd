@@ -4,10 +4,10 @@
 \alias{pal_region}
 \title{WHO region colours (\code{base} fills or \code{text} variants)}
 \usage{
-pal_region(variant = c("base", "text"), theme = c("light", "dark"))
+pal_region(component = c("base", "text"), theme = c("light", "dark"))
 }
 \arguments{
-\item{variant}{\code{base} (from \code{category.region}) or \code{text} (from
+\item{component}{\code{base} (from \code{category.region}) or \code{text} (from
 \code{category.text} using the mapping above).}
 
 \item{theme}{Either \code{"light"} or \code{"dark"}.}

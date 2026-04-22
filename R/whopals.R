@@ -100,24 +100,24 @@ pal_theme <- function(theme = c("light", "dark")) {
 #' @inheritParams pal_theme
 #' @param name Palette key from the design language: `nominal` is the main
 #'   six-colour category pool (`0` … `5`, optionally `99` for "other").
-#' @param variant Contrast level: `base`, `stronger`, or `text` branches under
+#' @param component Contrast level: `base`, `stronger`, or `text` branches under
 #'   `category` in the embedded tokens.
 #' @param include_other If `TRUE`, include category `99` ("other") from the
-#'   embedded tokens (`category.<variant>$99`, merged at build time from the
+#'   embedded tokens (`category.<component>$99`, merged at build time from the
 #'   WHO design language spec).
 #' @return Named character vector `0` … `5`, plus `99` when requested.
 #' @export
 pal_category <- function(name = c("nominal"),
-                         variant = c("base", "stronger", "text"),
+                         component = c("base", "stronger", "text"),
                          theme = c("light", "dark"),
                          include_other = FALSE) {
   name <- match.arg(name)
-  variant <- match.arg(variant)
+  component <- match.arg(component)
   theme <- match.arg(theme)
   cats <- .whopals_theme_colors(theme)[["category"]]
-  block <- cats[[variant]]
+  block <- cats[[component]]
   if (is.null(block)) {
-    stop("No category/", variant, " for theme ", theme, call. = FALSE)
+    stop("No category/", component, " for theme ", theme, call. = FALSE)
   }
   out <- unlist(block, use.names = TRUE)
   if (!include_other) {
@@ -134,17 +134,17 @@ pal_category <- function(name = c("nominal"),
 #' SEARO→5, WPRO→0.
 #'
 #' @inheritParams pal_theme
-#' @param variant `base` (from `category.region`) or `text` (from
+#' @param component `base` (from `category.region`) or `text` (from
 #'   `category.text` using the mapping above).
 #' @return Named vector with keys `afro`, `amro`, `emro`, `euro`, `searo`,
 #'   `wpro`.
 #' @export
-pal_region <- function(variant = c("base", "text"),
-                       theme = c("light", "dark")) {
-  variant <- match.arg(variant)
+pal_region <- function(component = c("base", "text"),
+                         theme = c("light", "dark")) {
+  component <- match.arg(component)
   theme <- match.arg(theme)
   cats <- .whopals_theme_colors(theme)[["category"]]
-  if (variant == "base") {
+  if (component == "base") {
     reg <- cats[["region"]]
     if (is.null(reg)) {
       stop("No category.region for theme ", theme, call. = FALSE)
@@ -168,39 +168,40 @@ pal_region <- function(variant = c("base", "text"),
 #' Sequential scales (`brand`, `complementary`, `colorful`)
 #'
 #' Stops match the embedded token keys (low to high). For `brand` and
-#' `complementary`, `variant = "secondary"` drops the lightest stop (the shorter
-#' scales on the design language site). For `colorful`, pick `variant = "base"`
-#' or `"alt"` (two multi-hue tracks).
+#' `complementary`, `component = "secondary"` drops the lightest stop (the
+#' shorter scales on the design language site). For `colorful`, pick
+#' `component = "base"` or `"alt"` (two multi-hue tracks).
 #'
 #' @inheritParams pal_theme
-#' @param name Scale family: `brand`, `complementary`, or `colorful`.
-#' @param variant For `brand` and `complementary`: `base` (all stops) or
+#' @param variant Scale family: `brand`, `complementary`, or `colorful`.
+#' @param component For `brand` and `complementary`: `base` (all stops) or
 #'   `secondary` (omit the lightest stop). For `colorful`: `base` or `alt`.
 #' @param n If `NULL`, return the discrete token stops. If a positive integer,
 #'   interpolate in CIELAB space between those stops to length `n`.
 #' @return Unnamed (if `n` set) or named character vector of hex colours.
 #' @export
-pal_sequential <- function(name = c("brand", "complementary", "colorful"),
-                           variant = "base",
-                           theme = c("light", "dark"),
-                           n = NULL) {
-  name <- match.arg(name)
+pal_sequential <- function(
+    variant = c("brand", "complementary", "colorful"),
+    component = "base",
+    theme = c("light", "dark"),
+    n = NULL) {
+  variant <- match.arg(variant)
   theme <- match.arg(theme)
   seq_block <- .whopals_theme_colors(theme)[["sequential"]]
-  if (name %in% c("brand", "complementary")) {
-    variant <- match.arg(variant, c("base", "secondary"))
-    stops <- .ordered_stops(seq_block[[name]])
-    if (variant == "secondary") {
+  if (variant %in% c("brand", "complementary")) {
+    component <- match.arg(component, c("base", "secondary"))
+    stops <- .ordered_stops(seq_block[[variant]])
+    if (component == "secondary") {
       if (length(stops) < 3L) {
-        stop("Not enough stops for secondary variant.", call. = FALSE)
+        stop("Not enough stops for secondary component.", call. = FALSE)
       }
       stops <- stops[-1L]
     }
   } else {
-    variant <- match.arg(variant, c("base", "alt"))
-    col <- seq_block[["colorful"]][[variant]]
+    component <- match.arg(component, c("base", "alt"))
+    col <- seq_block[["colorful"]][[component]]
     if (is.null(col)) {
-      stop("No sequential/colorful/", variant, " for theme ", theme,
+      stop("No sequential/colorful/", component, " for theme ", theme,
         call. = FALSE
       )
     }
@@ -222,7 +223,7 @@ pal_sequential <- function(name = c("brand", "complementary", "colorful"),
 #' language site.
 #'
 #' @inheritParams pal_theme
-#' @param variant `base` or `alt`, matching token group names under
+#' @param component `base` or `alt`, matching token group names under
 #'   `diverging/`.
 #' @param n If `NULL`, return the five token stops. If an integer >= 2,
 #'   interpolate in CIELAB space to length `n`.
@@ -230,12 +231,12 @@ pal_sequential <- function(name = c("brand", "complementary", "colorful"),
 #'   `positive-1`, `positive-2`, unless `n` is set (then unnamed interpolated
 #'   vector).
 #' @export
-pal_diverging <- function(variant = c("base", "alt"),
+pal_diverging <- function(component = c("base", "alt"),
                           theme = c("light", "dark"),
                           n = NULL) {
-  variant <- match.arg(variant)
+  component <- match.arg(component)
   theme <- match.arg(theme)
-  div <- .whopals_theme_colors(theme)[["diverging"]][[variant]]
+  div <- .whopals_theme_colors(theme)[["diverging"]][[component]]
   keys <- c("negative-2", "negative-1", "neutral", "positive-1", "positive-2")
   stops <- vapply(keys, function(k) div[[k]], character(1L), USE.NAMES = TRUE)
   if (is.null(n)) {

@@ -6,7 +6,7 @@
 \usage{
 pal_category(
   name = c("nominal"),
-  variant = c("base", "stronger", "text"),
+  component = c("base", "stronger", "text"),
   theme = c("light", "dark"),
   include_other = FALSE
 )
@@ -15,13 +15,13 @@ pal_category(
 \item{name}{Palette key from the design language: \code{nominal} is the main
 six-colour category pool (\code{0} … \code{5}, optionally \code{99} for "other").}
 
-\item{variant}{Contrast level: \code{base}, \code{stronger}, or \code{text} branches under
+\item{component}{Contrast level: \code{base}, \code{stronger}, or \code{text} branches under
 \code{category} in the embedded tokens.}
 
 \item{theme}{Either \code{"light"} or \code{"dark"}.}
 
 \item{include_other}{If \code{TRUE}, include category \code{99} ("other") from the
-embedded tokens (\verb{category.<variant>$99}, merged at build time from the
+embedded tokens (\verb{category.<component>$99}, merged at build time from the
 WHO design language spec).}
 }
 \value{

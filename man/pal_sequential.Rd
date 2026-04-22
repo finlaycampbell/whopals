@@ -5,16 +5,16 @@
 \title{Sequential scales (\code{brand}, \code{complementary}, \code{colorful})}
 \usage{
 pal_sequential(
-  name = c("brand", "complementary", "colorful"),
-  variant = "base",
+  variant = c("brand", "complementary", "colorful"),
+  component = "base",
   theme = c("light", "dark"),
   n = NULL
 )
 }
 \arguments{
-\item{name}{Scale family: \code{brand}, \code{complementary}, or \code{colorful}.}
+\item{variant}{Scale family: \code{brand}, \code{complementary}, or \code{colorful}.}
 
-\item{variant}{For \code{brand} and \code{complementary}: \code{base} (all stops) or
+\item{component}{For \code{brand} and \code{complementary}: \code{base} (all stops) or
 \code{secondary} (omit the lightest stop). For \code{colorful}: \code{base} or \code{alt}.}
 
 \item{theme}{Either \code{"light"} or \code{"dark"}.}
@@ -27,7 +27,7 @@ Unnamed (if \code{n} set) or named character vector of hex colours.
 }
 \description{
 Stops match the embedded token keys (low to high). For \code{brand} and
-\code{complementary}, \code{variant = "secondary"} drops the lightest stop (the shorter
-scales on the design language site). For \code{colorful}, pick \code{variant = "base"}
-or \code{"alt"} (two multi-hue tracks).
+\code{complementary}, \code{component = "secondary"} drops the lightest stop (the
+shorter scales on the design language site). For \code{colorful}, pick
+\code{component = "base"} or \code{"alt"} (two multi-hue tracks).
 }
