@@ -3,15 +3,12 @@
 
 # whopals
 
-**whopals** turns the colour definitions from the [WHO Data Design
-Language —
-Colours](https://srhdteuwpubsa.z6.web.core.windows.net/gho/data/design-language/design-system/colors/)
-into plain R: named hex vectors and small accessor functions so you can
-use the same themes, categories, regions, sequential and diverging
-scales, and functional colours in **ggplot2**, **highcharter**, or any
-other R graphics without hand-copying values from the site. Values are
-embedded from WHO design tokens (see `data-raw/build_whopals_colors.R`
-and `R/colors.R`).
+This package brings the official WHO Data Design Language colour system
+into R as named hex values and small functions that return those
+palettes, so you can rely on the same published colours as on the WHO
+site without typing hex codes by hand. The specification is published by
+WHO at [WHO Data Design
+Language](https://srhdteuwpubsa.z6.web.core.windows.net/gho/data/design-language/design-system/colors/).
 
 ## Installation
 
@@ -36,7 +33,6 @@ package is attached). Defaults for each function match the plots below.
 
 - **component**: base, stronger, text
 - **theme**: light, dark
-- **include_other**: TRUE, FALSE
 
 **`pal_region()`**
 
@@ -46,17 +42,13 @@ package is attached). Defaults for each function match the plots below.
 **`pal_sequential()`**
 
 - **variant**: brand, complementary, colorful
-- **component**: base, secondary (when **variant** is brand or
-  complementary); base, alt (when **variant** is colorful)
+- **component**: base, secondary, alt
 - **theme**: light, dark
-- **n**: NULL (discrete token stops) or an integer ≥ 2 (CIELAB
-  interpolation length)
 
 **`pal_diverging()`**
 
 - **component**: base, alt
 - **theme**: light, dark
-- **n**: NULL (five stops) or an integer ≥ 2 (interpolated length)
 
 **`pal_functional()`**
 
@@ -71,9 +63,8 @@ package is attached). Defaults for each function match the plots below.
 - **component**: base, text, both
 - **theme**: light, dark
 
-The plots below use **default** arguments only,
-e.g. `whopals::pal_gender()` matches
-`whopals::pal_gender(theme = "light")`.
+The plots below use default arguments only, for example
+`whopals::pal_gender()` matches `whopals::pal_gender(theme = "light")`.
 
 ## `whopals::pal_theme()`
 
