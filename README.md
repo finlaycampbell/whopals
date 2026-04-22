@@ -22,24 +22,32 @@ function (for example `whopals::pal_theme()`, `whopals::pal_category()`,
 `whopals::pal_diverging()`, `whopals::pal_functional()`,
 `whopals::pal_gender()`, `whopals::pal_trend()`). You can always call
 them with the `whopals::` prefix; if you attach the package with
-`library(whopals)`, that prefix is optional. The plots below use each
-function’s defaults.
+`library(whopals)`, that prefix is optional.
 
 ### Options by palette
+
+Examples use default arguments (including `theme = "light"`) unless the
+title states otherwise.
 
 **`pal_theme()`**
 
 - **theme**: light, dark
+
+![](man/figures/README-pal-theme-1.png)<!-- -->
 
 **`pal_category()`**
 
 - **component**: base, stronger, text
 - **theme**: light, dark
 
+![](man/figures/README-pal-category-1.png)<!-- -->
+
 **`pal_region()`**
 
 - **component**: base, text
 - **theme**: light, dark
+
+![](man/figures/README-pal-region-1.png)<!-- -->
 
 **`pal_sequential()`**
 
@@ -47,55 +55,34 @@ function’s defaults.
 - **component**: base, secondary, alt
 - **theme**: light, dark
 
+![](man/figures/README-pal-sequential-brand-1.png)<!-- -->
+
+![](man/figures/README-pal-sequential-complementary-1.png)<!-- -->
+
+![](man/figures/README-pal-sequential-colorful-1.png)<!-- -->
+
 **`pal_diverging()`**
 
 - **component**: base, alt
 - **theme**: light, dark
 
+![](man/figures/README-pal-diverging-1.png)<!-- -->
+
 **`pal_functional()`**
 
 - **theme**: light, dark
+
+![](man/figures/README-pal-functional-1.png)<!-- -->
 
 **`pal_gender()`**
 
 - **theme**: light, dark
 
+![](man/figures/README-pal-gender-1.png)<!-- -->
+
 **`pal_trend()`**
 
 - **component**: base, text, both
 - **theme**: light, dark
-
-The plots below use default arguments only, for example
-`whopals::pal_gender()` matches `whopals::pal_gender(theme = "light")`.
-
-## `whopals::pal_theme()`
-
-![](man/figures/README-pal-theme-1.png)<!-- -->
-
-## `whopals::pal_category()`
-
-![](man/figures/README-pal-category-1.png)<!-- -->
-
-## `whopals::pal_region()`
-
-![](man/figures/README-pal-region-1.png)<!-- -->
-
-## `whopals::pal_sequential()`
-
-![](man/figures/README-pal-sequential-1.png)<!-- -->
-
-## `whopals::pal_diverging()`
-
-![](man/figures/README-pal-diverging-1.png)<!-- -->
-
-## `whopals::pal_functional()`
-
-![](man/figures/README-pal-functional-1.png)<!-- -->
-
-## `whopals::pal_gender()`
-
-![](man/figures/README-pal-gender-1.png)<!-- -->
-
-## `whopals::pal_trend()`
 
 ![](man/figures/README-pal-trend-1.png)<!-- -->

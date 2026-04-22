@@ -34,49 +34,7 @@ This package brings the official WHO Data Design Language colour system into R a
 pak::pak("finlaycampbell/whopals")
 ```
 
-After installing, every palette is exposed as a `whopals::pal_*` function (for example `whopals::pal_theme()`, `whopals::pal_category()`, `whopals::pal_region()`, `whopals::pal_sequential()`, `whopals::pal_diverging()`, `whopals::pal_functional()`, `whopals::pal_gender()`, `whopals::pal_trend()`). You can always call them with the `whopals::` prefix; if you attach the package with `library(whopals)`, that prefix is optional. The plots below use each function’s defaults.
-
-### Options by palette
-
-**`pal_theme()`**
-
-* **theme**: light, dark
-
-**`pal_category()`**
-
-* **component**: base, stronger, text
-* **theme**: light, dark
-
-**`pal_region()`**
-
-* **component**: base, text
-* **theme**: light, dark
-
-**`pal_sequential()`**
-
-* **variant**: brand, complementary, colorful
-* **component**: base, secondary, alt
-* **theme**: light, dark
-
-**`pal_diverging()`**
-
-* **component**: base, alt
-* **theme**: light, dark
-
-**`pal_functional()`**
-
-* **theme**: light, dark
-
-**`pal_gender()`**
-
-* **theme**: light, dark
-
-**`pal_trend()`**
-
-* **component**: base, text, both
-* **theme**: light, dark
-
-The plots below use default arguments only, for example `whopals::pal_gender()` matches `whopals::pal_gender(theme = "light")`.
+After installing, every palette is exposed as a `whopals::pal_*` function (for example `whopals::pal_theme()`, `whopals::pal_category()`, `whopals::pal_region()`, `whopals::pal_sequential()`, `whopals::pal_diverging()`, `whopals::pal_functional()`, `whopals::pal_gender()`, `whopals::pal_trend()`). You can always call them with the `whopals::` prefix; if you attach the package with `library(whopals)`, that prefix is optional.
 
 ```{r plot-helper, include = FALSE}
 plot_pal <- function(x, title) {
@@ -106,49 +64,92 @@ plot_pal <- function(x, title) {
 }
 ```
 
-## `whopals::pal_theme()`
+### Options by palette
+
+Examples use default arguments (including `theme = "light"`) unless the title states otherwise.
+
+**`pal_theme()`**
+
+* **theme**: light, dark
 
 ```{r pal-theme, fig.height = 2.8}
 plot_pal(whopals::pal_theme(), "whopals::pal_theme()")
 ```
 
-## `whopals::pal_category()`
+**`pal_category()`**
+
+* **component**: base, stronger, text
+* **theme**: light, dark
 
 ```{r pal-category}
 plot_pal(whopals::pal_category(), "whopals::pal_category()")
 ```
 
-## `whopals::pal_region()`
+**`pal_region()`**
+
+* **component**: base, text
+* **theme**: light, dark
 
 ```{r pal-region}
 plot_pal(whopals::pal_region(), "whopals::pal_region()")
 ```
 
-## `whopals::pal_sequential()`
+**`pal_sequential()`**
 
-```{r pal-sequential}
-plot_pal(whopals::pal_sequential(), "whopals::pal_sequential()")
+* **variant**: brand, complementary, colorful
+* **component**: base, secondary, alt
+* **theme**: light, dark
+
+```{r pal-sequential-brand, fig.height = 2.2}
+plot_pal(
+  whopals::pal_sequential("brand"),
+  'whopals::pal_sequential(variant = "brand")'
+)
 ```
 
-## `whopals::pal_diverging()`
+```{r pal-sequential-complementary, fig.height = 2.2}
+plot_pal(
+  whopals::pal_sequential("complementary"),
+  'whopals::pal_sequential(variant = "complementary")'
+)
+```
+
+```{r pal-sequential-colorful, fig.height = 2.2}
+plot_pal(
+  whopals::pal_sequential("colorful"),
+  'whopals::pal_sequential(variant = "colorful")'
+)
+```
+
+**`pal_diverging()`**
+
+* **component**: base, alt
+* **theme**: light, dark
 
 ```{r pal-diverging}
 plot_pal(whopals::pal_diverging(), "whopals::pal_diverging()")
 ```
 
-## `whopals::pal_functional()`
+**`pal_functional()`**
+
+* **theme**: light, dark
 
 ```{r pal-functional, fig.height = 3.2}
 plot_pal(whopals::pal_functional(), "whopals::pal_functional()")
 ```
 
-## `whopals::pal_gender()`
+**`pal_gender()`**
+
+* **theme**: light, dark
 
 ```{r pal-gender}
 plot_pal(whopals::pal_gender(), "whopals::pal_gender()")
 ```
 
-## `whopals::pal_trend()`
+**`pal_trend()`**
+
+* **component**: base, text, both
+* **theme**: light, dark
 
 ```{r pal-trend}
 plot_pal(whopals::pal_trend(), "whopals::pal_trend()")
