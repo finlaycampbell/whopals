@@ -5,16 +5,12 @@
 \title{Nominal category colours (including optional "other")}
 \usage{
 pal_category(
-  name = c("nominal"),
   component = c("base", "stronger", "text"),
   theme = c("light", "dark"),
   include_other = FALSE
 )
 }
 \arguments{
-\item{name}{Palette key from the design language: \code{nominal} is the main
-six-colour category pool (\code{0} … \code{5}, optionally \code{99} for "other").}
-
 \item{component}{Contrast level: \code{base}, \code{stronger}, or \code{text} branches under
 \code{category} in the embedded tokens.}
 
@@ -28,5 +24,6 @@ WHO design language spec).}
 Named character vector \code{0} … \code{5}, plus \code{99} when requested.
 }
 \description{
-Nominal category colours (including optional "other")
+Returns the main six-colour nominal pool (\code{0} … \code{5}, optionally \code{99} for
+"other") from the design language.
 }

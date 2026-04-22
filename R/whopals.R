@@ -97,9 +97,10 @@ pal_theme <- function(theme = c("light", "dark")) {
 
 #' Nominal category colours (including optional "other")
 #'
+#' Returns the main six-colour nominal pool (`0` … `5`, optionally `99` for
+#' "other") from the design language.
+#'
 #' @inheritParams pal_theme
-#' @param name Palette key from the design language: `nominal` is the main
-#'   six-colour category pool (`0` … `5`, optionally `99` for "other").
 #' @param component Contrast level: `base`, `stronger`, or `text` branches under
 #'   `category` in the embedded tokens.
 #' @param include_other If `TRUE`, include category `99` ("other") from the
@@ -107,11 +108,9 @@ pal_theme <- function(theme = c("light", "dark")) {
 #'   WHO design language spec).
 #' @return Named character vector `0` … `5`, plus `99` when requested.
 #' @export
-pal_category <- function(name = c("nominal"),
-                         component = c("base", "stronger", "text"),
+pal_category <- function(component = c("base", "stronger", "text"),
                          theme = c("light", "dark"),
                          include_other = FALSE) {
-  name <- match.arg(name)
   component <- match.arg(component)
   theme <- match.arg(theme)
   cats <- .whopals_theme_colors(theme)[["category"]]

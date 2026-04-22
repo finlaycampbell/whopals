@@ -34,20 +34,50 @@ library(ggplot2)
 pak::pak("finlaycampbell/whopals")
 ```
 
-After `library(whopals)`, use `whopals::pal_theme()`, `whopals::pal_category()`, `whopals::pal_region()`, `whopals::pal_sequential()`, `whopals::pal_diverging()`, `whopals::pal_functional()`, `whopals::pal_gender()`, and `whopals::pal_trend()` (the `whopals::` prefix is optional once the package is attached). **`theme`** is always `light` or `dark` where the function takes it. **`pal_sequential()`** uses **`variant`** (scale family; see table) and **`component`** (`base` / `secondary` for brand and complementary, `base` / `alt` for colorful). **`pal_category()`** uses **`name`** (see table) and **`component`** (`base`, `stronger`, `text`). **`pal_region()`**, **`pal_diverging()`**, and **`pal_trend()`** use **`component`** for their `base` / `text` / `alt` / `both` choices (see each function's documentation). See roxygen help for **`include_other`**, **`n`**, and defaults.
+After `library(whopals)`, use `whopals::pal_theme()`, `whopals::pal_category()`, `whopals::pal_region()`, `whopals::pal_sequential()`, `whopals::pal_diverging()`, `whopals::pal_functional()`, `whopals::pal_gender()`, and `whopals::pal_trend()` (the `whopals::` prefix is optional once the package is attached). Defaults for each function match the plots below.
 
-### `variant` and `name` (not `component` or `theme`)
+### Arguments by palette
 
-| Function | `variant` | `name` |
-|----------|-----------|--------|
-| `pal_theme()` | *(none)* | *(none)* |
-| `pal_category()` | *(none)* | `nominal` |
-| `pal_region()` | *(none)* | *(none)* |
-| `pal_sequential()` | `brand`, `complementary`, `colorful` | *(none)* |
-| `pal_diverging()` | *(none)* | *(none)* |
-| `pal_functional()` | *(none)* | *(none)* |
-| `pal_gender()` | *(none)* | *(none)* |
-| `pal_trend()` | *(none)* | *(none)* |
+**`pal_theme()`**
+
+* **theme**: light, dark
+
+**`pal_category()`**
+
+* **component**: base, stronger, text
+* **theme**: light, dark
+* **include_other**: TRUE, FALSE
+
+**`pal_region()`**
+
+* **component**: base, text
+* **theme**: light, dark
+
+**`pal_sequential()`**
+
+* **variant**: brand, complementary, colorful
+* **component**: base, secondary (when **variant** is brand or complementary); base, alt (when **variant** is colorful)
+* **theme**: light, dark
+* **n**: NULL (discrete token stops) or an integer ≥ 2 (CIELAB interpolation length)
+
+**`pal_diverging()`**
+
+* **component**: base, alt
+* **theme**: light, dark
+* **n**: NULL (five stops) or an integer ≥ 2 (interpolated length)
+
+**`pal_functional()`**
+
+* **theme**: light, dark
+
+**`pal_gender()`**
+
+* **theme**: light, dark
+
+**`pal_trend()`**
+
+* **component**: base, text, both
+* **theme**: light, dark
 
 The plots below use **default** arguments only, e.g. `whopals::pal_gender()` matches `whopals::pal_gender(theme = "light")`.
 
