@@ -213,7 +213,7 @@ ggplot(df_dark, aes(x = who_region, y = value, fill = who_region)) +
       color = NA
     ),
     panel.background = element_rect(
-      fill = unname(whopals::pal_background("weaker", "dark")),
+      fill = unname(whopals::pal_background("selection", "dark")),
       color = NA
     ),
     plot.title = element_text(
@@ -222,7 +222,7 @@ ggplot(df_dark, aes(x = who_region, y = value, fill = who_region)) +
       size = 14
     ),
     axis.title = element_text(
-      color = unname(whopals::pal_foreground("weaker", "dark"))
+      color = unname(whopals::pal_foreground("base", "dark"))
     ),
     axis.text = element_text(
       color = unname(whopals::pal_text("base", "dark"))
@@ -253,7 +253,7 @@ ggplot(df_light, aes(x = who_region, y = value, fill = who_region)) +
       color = NA
     ),
     panel.background = element_rect(
-      fill = unname(whopals::pal_background("weaker", "light")),
+      fill = unname(whopals::pal_background("selection", "light")),
       color = NA
     ),
     plot.title = element_text(
@@ -262,7 +262,7 @@ ggplot(df_light, aes(x = who_region, y = value, fill = who_region)) +
       size = 14
     ),
     axis.title = element_text(
-      color = unname(whopals::pal_foreground("weaker", "light"))
+      color = unname(whopals::pal_foreground("base", "light"))
     ),
     axis.text = element_text(
       color = unname(whopals::pal_text("base", "light"))
