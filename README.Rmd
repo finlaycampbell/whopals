@@ -34,7 +34,7 @@ This package brings the official WHO Data Design Language colour system into R a
 pak::pak("finlaycampbell/whopals")
 ```
 
-After installing, every palette is exposed as a `whopals::pal_*` function (for example `whopals::pal_theme()`, `whopals::pal_category()`, `whopals::pal_region()`, `whopals::pal_sequential()`, `whopals::pal_diverging()`, `whopals::pal_functional()`, `whopals::pal_gender()`, `whopals::pal_trend()`). You can always call them with the `whopals::` prefix; if you attach the package with `library(whopals)`, that prefix is optional.
+After installing, every palette is exposed as a `whopals::pal_*` function. Use `theme` to choose the light or dark token tree. Where a function exposes it, `variant` selects the scale family (for example which sequential scale), and `component` narrows to a sub-track or contrast level (for example base versus text, or base versus secondary within a family). Each function only accepts the arguments that apply to it; anything else is fixed by the design language.
 
 ```{r plot-helper, include = FALSE}
 plot_pal <- function(x, title) {
