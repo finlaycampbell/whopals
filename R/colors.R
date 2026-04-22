@@ -1,6 +1,6 @@
 #' WHO data design language embedded colour list (internal).
 #'
-#' Source of truth for regeneration: design/design_tokens.json
+#' Source of truth for regeneration: inst/colors.json
 #' Spec: https://srhdteuwpubsa.z6.web.core.windows.net/gho/data/design-language/design-system/colors/
 #'
 #' Do not edit by hand unless syncing with the JSON; otherwise run:

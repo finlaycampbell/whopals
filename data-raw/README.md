@@ -2,7 +2,7 @@
 
 ## `build_whopals_colors.R`
 
-When `design/design_tokens.json` changes (WHO design token release), regenerate the bundled colour list used by the palette functions:
+When `inst/colors.json` changes (WHO design token release), regenerate the bundled colour list used by the palette functions:
 
 ```r
 Rscript data-raw/build_whopals_colors.R

@@ -1,4 +1,4 @@
-# Regenerate R/colors.R from design/design_tokens.json.
+# Regenerate R/colors.R from inst/colors.json.
 # Run from the package root:
 #   Rscript data-raw/build_whopals_colors.R
 # or: source("data-raw/build_whopals_colors.R", chdir = TRUE) after setwd()
@@ -17,7 +17,7 @@ pkg_root <- if (!is.na(script_path)) {
   normalizePath(file.path(getwd(), ".."), winslash = "/", mustWork = TRUE)
 }
 
-json_path <- file.path(pkg_root, "design", "design_tokens.json")
+json_path <- file.path(pkg_root, "inst", "colors.json")
 if (!file.exists(json_path)) {
   stop("Missing: ", json_path, call. = FALSE)
 }
@@ -33,7 +33,7 @@ if (is.null(color)) {
 }
 
 # Category 99 ("other") is in the WHO design language public spec but often
-# absent from design_tokens.json; merge it into category base/stronger/text.
+# absent from colors.json; merge it into category base/stronger/text.
 inject_category_other_99 <- function(col) {
   other_hex <- c(light = "#cccccc", dark = "#696c85")
   for (th in names(other_hex)) {
@@ -56,7 +56,7 @@ out_path <- file.path(pkg_root, "R", "colors.R")
 hdr <- c(
   "#' WHO data design language embedded colour list (internal).",
   "#'",
-  "#' Source of truth for regeneration: design/design_tokens.json",
+  "#' Source of truth for regeneration: inst/colors.json",
   "#' Spec: https://srhdteuwpubsa.z6.web.core.windows.net/gho/data/design-language/design-system/colors/",
   "#'",
   "#' Do not edit by hand unless syncing with the JSON; otherwise run:",

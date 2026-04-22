@@ -2,7 +2,7 @@
 # Spec:
 # https://srhdteuwpubsa.z6.web.core.windows.net/gho/data/design-language/design-system/colors/
 # Colours are embedded in `.whopals_colors` (see `R/colors.R`),
-# regenerated from `design/design_tokens.json` via
+# regenerated from `inst/colors.json` via
 # `data-raw/build_whopals_colors.R`. Optional `n` uses CIELAB interpolation
 # between token stops (see design language site).
 
