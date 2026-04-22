@@ -1,0 +1,113 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit README.Rmd and run `rmarkdown::render("README.Rmd")`. -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  fig.path = "man/figures/README-",
+  fig.width = 8,
+  fig.height = 2.2,
+  dpi = 120,
+  message = FALSE,
+  warning = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+)
+dir.create("man/figures", recursive = TRUE, showWarnings = FALSE)
+```
+
+```{r pkg, include = FALSE}
+library(whopals)
+library(ggplot2)
+```
+
+# whopals
+
+**whopals** turns the colour definitions from the [WHO Data Design Language — Colours](https://srhdteuwpubsa.z6.web.core.windows.net/gho/data/design-language/design-system/colors/) into plain R: named hex vectors and small accessor functions so you can use the same themes, categories, regions, sequential and diverging scales, and functional colours in **ggplot2**, **highcharter**, or any other R graphics without hand-copying values from the site. Values are embedded from WHO design tokens (see `data-raw/build_whopals_colors.R` and `R/colors.R`).
+
+## Installation
+
+```r
+pak::pak("finlaycampbell/whopals")
+```
+
+After `library(whopals)`, use `whopals::pal_theme()`, `whopals::pal_category()`, `whopals::pal_region()`, `whopals::pal_sequential()`, `whopals::pal_diverging()`, `whopals::pal_functional()`, `whopals::pal_gender()`, and `whopals::pal_trend()` (the `whopals::` prefix is optional once the package is attached). Each function accepts arguments such as `theme` (light/dark), `strength` / `variant` / `scale` / `name` / `component`, `include_other`, and `n` for CIELAB interpolation on sequential and diverging scales. The plots below use **default** arguments only, e.g. `whopals::pal_gender()` matches `whopals::pal_gender(theme = "light")`.
+
+```{r plot-helper, include = FALSE}
+plot_pal <- function(x, title) {
+  lab <- names(x)
+  if (is.null(lab)) {
+    lab <- as.character(seq_along(x))
+  }
+  df <- data.frame(
+    label = factor(lab, levels = lab),
+    y = 1L,
+    col = unname(x),
+    stringsAsFactors = FALSE
+  )
+  ggplot(df, aes(x = label, y = y, fill = col)) +
+    geom_tile(width = 0.92, height = 0.85) +
+    scale_fill_identity() +
+    coord_cartesian(expand = FALSE) +
+    labs(title = title, x = NULL, y = NULL) +
+    theme_minimal(base_size = 11) +
+    theme(
+      axis.text.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      panel.grid = element_blank(),
+      plot.title = element_text(face = "bold"),
+      axis.text.x = element_text(angle = 35, hjust = 1, vjust = 1)
+    )
+}
+```
+
+## `whopals::pal_theme()`
+
+```{r pal-theme, fig.height = 2.8}
+plot_pal(whopals::pal_theme(), "whopals::pal_theme()")
+```
+
+## `whopals::pal_category()`
+
+```{r pal-category}
+plot_pal(whopals::pal_category(), "whopals::pal_category()")
+```
+
+## `whopals::pal_region()`
+
+```{r pal-region}
+plot_pal(whopals::pal_region(), "whopals::pal_region()")
+```
+
+## `whopals::pal_sequential()`
+
+```{r pal-sequential}
+plot_pal(whopals::pal_sequential(), "whopals::pal_sequential()")
+```
+
+## `whopals::pal_diverging()`
+
+```{r pal-diverging}
+plot_pal(whopals::pal_diverging(), "whopals::pal_diverging()")
+```
+
+## `whopals::pal_functional()`
+
+```{r pal-functional, fig.height = 3.2}
+plot_pal(whopals::pal_functional(), "whopals::pal_functional()")
+```
+
+## `whopals::pal_gender()`
+
+```{r pal-gender}
+plot_pal(whopals::pal_gender(), "whopals::pal_gender()")
+```
+
+## `whopals::pal_trend()`
+
+```{r pal-trend}
+plot_pal(whopals::pal_trend(), "whopals::pal_trend()")
+```

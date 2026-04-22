@@ -1,0 +1,301 @@
+:root {
+  --font-family-stack: 'Noto Sans', sans-serif;
+  --font-family-display-stack: 'Noto Sans Display', 'Noto Sans',sans-serif;
+  --font-family-base: Noto Sans;
+  --font-family-heading: Noto Sans;
+  --font-family-display: Noto Sans Display;
+  --font-line-height-regular-unitless: 1.65;
+  --font-line-height-smaller-unitless: 1.45;
+  --font-line-height-regular: 165%;
+  --font-line-height-smaller: 145%;
+  --font-line-height-smallest: 110%;
+  --font-style-base: 400 16px / 1.65 'Noto Sans', sans-serif;
+  --font-style-caption: 400 16px / 1.65 'Noto Sans', sans-serif;
+  --font-style-heading: 600 16px / 1.45 'Noto Sans', sans-serif;
+  --font-style-display: 600 16px / 1.45 'Noto Sans Display', 'Noto Sans',sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-italic: Italic;
+  --font-letter-spacing-regular: 0em;
+  --font-paragraph-spacing-regular: 8;
+  --font-text-case-none: none;
+  --font-text-decoration-none: none;
+  --color-light-background-selection: #f0f1f3; /* Background for selections */
+  --color-light-background-base: #ffffff; /* The default light background color, used e.g. as a backdrop for charts or cards. */
+  --color-light-background-weaker: #f6f7f9; /* A slightly shaded background color, used e.g. as a backdrop behind card elements. */
+  --color-light-foreground-base: #222222; /* Used for elements in the foreground that have a strong contrast to the background. */
+  --color-light-foreground-weaker: #71757d; /* Used for elements in the foreground that have a weaker contrast to the background (e.g. axes). */
+  --color-light-foreground-weakest: #c2c6ce; /* Used for elements in the foreground that have the weakest contrast to the background (e.g. ticks, help-lines) */
+  --color-light-text-base: #222222; /* Default text color for strong background contrast. */
+  --color-light-text-weaker: #71757d; /* Text color with weaker background contrast. */
+  --color-light-functional-accent: #ffcb01; /* Used for author-driven accents of parts of charts, texts and other elements. */
+  --color-light-functional-focus: #fff400; /* Used for marking of focused elements when using keyboard controls. */
+  --color-light-functional-not-available: #b2b2b2; /* Used for visual marks (e.g. countries in maps) where data is missing from the dataset. */
+  --color-light-functional-not-applicable: #f2f2f2; /* Used for visual marks (e.g. countries in maps) where the data is (deliberately) not part of the dataset. */
+  --color-light-functional-projected-hatch: #ffffff; /* Used in the mask of the hatching for projected values. */
+  --color-light-functional-filtered-out-base: #d9dae2; /* Used for visual marks in charts that have been filtered out. */
+  --color-light-functional-filtered-out-stronger: #9193ab; /* Used for smaller visual marks in charts that have been filtered out (background contrast min. 3:1). */
+  --color-light-functional-selection-0-base: #f4a81d; /* Used for first selection. */
+  --color-light-functional-selection-0-stronger: #cc850a; /* Used for first selection, when visual elements are smaller (background contrast min. 3:1). */
+  --color-light-functional-selection-1-base: #f26829; /* Used for second selection. */
+  --color-light-functional-selection-1-stronger: #e85130; /* Used for second selection, when visual elements are smaller (background contrast min. 3:1). */
+  --color-light-functional-selection-2-base: #bd53bd; /* Used for third selection. */
+  --color-light-functional-selection-2-stronger: #bd53bd; /* Used for third selection, when visual elements are smaller (background contrast min. 3:1). */
+  --color-light-functional-selection-stroke: #1a1a1a; /* Stroke for selected elements within charts & UI. */
+  --color-light-functional-selection-default-base: #008dc9; /* Used for selections of reference data (e.g. worldwide). */
+  --color-light-functional-selection-default-stronger: #008dc9; /* Used for selections of reference data (e.g. worldwide), when visual elements are smaller (background contrast min. 3:1). */
+  --color-light-brand-base: #008dc9; /* WHO brand color. */
+  --color-light-brand-stronger: #0f2d5b; /* WHO brand color with stronger contrast */
+  --color-light-brand-weaker: #90d3fb; /* WHO brand color with weaker contrast */
+  --color-light-category-base-0: #f4a81d; /* Used for nominal data of category 0. */
+  --color-light-category-base-1: #f26829; /* Used for nominal data of category 1. */
+  --color-light-category-base-2: #bd53bd; /* Used for nominal data of category 2. */
+  --color-light-category-base-3: #6363c0; /* Used for nominal data of category 3.  */
+  --color-light-category-base-4: #008dc9; /* Used for nominal data of category 4. */
+  --color-light-category-base-5: #40bf73; /* Used for nominal data of category 5. */
+  --color-light-category-stronger-0: #cc850a; /* Used for nominal data of category 0 when visual elements are small. */
+  --color-light-category-stronger-1: #e85130; /* Used for nominal data of category 1 when visual elements are small. */
+  --color-light-category-stronger-2: #bd53bd; /* Used for nominal data of category 2 when visual elements are small. */
+  --color-light-category-stronger-3: #6363c0; /* Used for nominal data of category 3 when visual elements are small. */
+  --color-light-category-stronger-4: #008dc9; /* Used for nominal data of category 4 when visual elements are small. */
+  --color-light-category-stronger-5: #37a463; /* Used for nominal data of category 5 when visual elements are small. */
+  --color-light-category-text-0: #754d06; /* Used for text associated with data of category 0 (complies with AAA standards for large and small text). */
+  --color-light-category-text-1: #9a3709; /* Used for text associated with data of category 1 (complies with AAA standards for large and small text). */
+  --color-light-category-text-2: #8e2f8e; /* Used for text associated with data of category 2 (complies with AAA standards for large and small text). */
+  --color-light-category-text-3: #4b4baf; /* Used for text associated with data of category 3 (complies with AAA standards for large and small text). */
+  --color-light-category-text-4: #245993; /* Used for text associated with data of category 4 (complies with AAA standards for large and small text). */
+  --color-light-category-text-5: #1d6339; /* Used for text associated with data of category 5 (complies with AAA standards for large and small text). */
+  --color-light-category-gender-male: #f4a81d; /* Used for gender data with category male. */
+  --color-light-category-gender-female: #6363c0; /* Used for gender data with category female. */
+  --color-light-category-gender-misc: #40bf73; /* Used for gender data with category non-binary. */
+  --color-light-category-region-afro: #6363c0; /* Used for regional data categories for the WHO African Region. */
+  --color-light-category-region-amro: #f26829; /* Used for regional data categories for the WHO Region of the Americas. */
+  --color-light-category-region-emro: #bd53bd; /* Used for regional data categories for the WHO Eastern Mediterranean Region. */
+  --color-light-category-region-euro: #008dc9; /* Used for regional data categories for the WHO European Region. */
+  --color-light-category-region-searo: #40bf73; /* Used for regional data categories for the WHO South-East Asian Region. */
+  --color-light-category-region-wpro: #f4a81d; /* Used for regional data categories for the WHO Western Pacific Region. */
+  --color-light-category-trend-worsening-base: #cf7e50; /* Used to indicate worsening conditions. */
+  --color-light-category-trend-worsening-text: #b15e2f;
+  --color-light-category-trend-stagnating-base: #746985; /* Used to indicate stagnating conditions. */
+  --color-light-category-trend-stagnating-text: #746985;
+  --color-light-category-trend-improving-base: #27a3b4; /* Used to indicate improving conditions. */
+  --color-light-category-trend-improving-text: #19818f;
+  --color-light-category-trend-unspecified-base: #4a4e58; /* Used to indicate trends where it is not specified whether higher or lower numbers show improving conditions. */
+  --color-light-category-trend-unspecified-text: #4a4e58;
+  --color-light-diverging-alt-negative-2: #a00016; /* First step in the alternative diverging color scale, used for the lowest (most negative) value.  */
+  --color-light-diverging-alt-negative-1: #d9777d; /* Second step in the alternative diverging color scale, used for values lower than zero (or data median). */
+  --color-light-diverging-alt-neutral: #d6dae5; /* Third step in the alternative diverging color scale, used for zero or data median. */
+  --color-light-diverging-alt-positive-1: #53abd0; /* Fourth step in the alternative diverging color scale, used for values higher than zero (or data median). */
+  --color-light-diverging-alt-positive-2: #0f2d5b; /* Fifth step in the alternative diverging color scale, used for the highest (most positive) value.  */
+  --color-light-diverging-base-negative-2: #ee8f00; /* First step in the based diverging color scale, used for the lowest (most negative) value.  */
+  --color-light-diverging-base-negative-1: #ebc26f; /* Second step in the base diverging color scale, used for values lower than zero (or data median). */
+  --color-light-diverging-base-neutral: #d6dae5; /* Third step in the base diverging color scale, used for zero or data median. */
+  --color-light-diverging-base-positive-1: #6fbedf; /* Fourth step in the base diverging color scale, used for values higher than zero (or data median). */
+  --color-light-diverging-base-positive-2: #1c4e94; /* Fifth step in the base diverging color scale, used for the highest (most positive) value.  */
+  --color-light-sequential-brand-0: #d7e6f3; /* First step in the base (theme) sequential color scale, used for the lowest value.  */
+  --color-light-sequential-brand-1: #75b6d6; /* Second step in the base (theme) sequential color scale. */
+  --color-light-sequential-brand-2: #0582bb; /* Third step in the base (theme) sequential color scale. */
+  --color-light-sequential-brand-3: #0f2d5b; /* Second step in the base (theme) sequential color scale, used for highest value. */
+  --color-light-sequential-complementary-0: #f5dbd9; /* First step in the complementary (emergency) sequential color scale, used for the lowest value.  */
+  --color-light-sequential-complementary-1: #f8908b; /* Second step in the complementary (emergency) sequential color scale. */
+  --color-light-sequential-complementary-2: #da484a; /* Third step in the complementary (emergency) sequential color scale. */
+  --color-light-sequential-complementary-3: #a00016; /* Fourth step in the complementary (emergency) sequential color scale, used for highest value. */
+  --color-light-sequential-colorful-base-0: #fbf6ca; /* First step in the base colorful (multi-hue) sequential color scale, used for the lowest value.  */
+  --color-light-sequential-colorful-base-1: #bacf99; /* Second step in the base colorful (multi-hue) sequential color scale. */
+  --color-light-sequential-colorful-base-2: #8297ec; /* Third step in the base colorful (multi-hue) sequential color scale. */
+  --color-light-sequential-colorful-base-3: #865fbb; /* Fourth step in the base colorful (multi-hue) sequential color scale. */
+  --color-light-sequential-colorful-base-4: #960055; /* Fifth step in the base colorful (multi-hue) sequential color scale, used for highest values. */
+  --color-light-sequential-colorful-alt-0: #fbf6ca; /* First step in the alternative colorful (multi-hue) sequential color scale, used for the lowest value.  */
+  --color-light-sequential-colorful-alt-1: #eabd89; /* Second step in the alternative colorful (multi-hue) sequential color scale. */
+  --color-light-sequential-colorful-alt-2: #c88684; /* Third step in the alternative colorful (multi-hue) sequential color scale. */
+  --color-light-sequential-colorful-alt-3: #875b9e; /* Fourth step in the alternative colorful (multi-hue) sequential color scale. */
+  --color-light-sequential-colorful-alt-4: #1c3e94; /* Fifth step in the alternative colorful (multi-hue) sequential color scale, used for highest values. */
+  --color-dark-background-selection: #282b43; /* Background for selections */
+  --color-dark-background-base: #171a33; /* The default dark background color, used e.g. as a backdrop for charts or cards. */
+  --color-dark-background-weaker: #24273d; /* A slightly shaded background color, used e.g. as a backdrop behind card elements. */
+  --color-dark-functional-accent: #ffcb01; /* Used for author-driven accents of parts of charts, texts and other elements. */
+  --color-dark-functional-focus: #fff400; /* Used for marking of focused elements when using keyboard controls. */
+  --color-dark-functional-not-available: #24273d; /* Used for visual marks (e.g. countries in maps) where data is missing from the dataset. */
+  --color-dark-functional-not-applicable: #282b40; /* Used for visual marks (e.g. countries in maps) where the data is (deliberately) not part of the dataset. */
+  --color-dark-functional-projected-hatch: #171a33; /* Used in the mask of the hatching for projected values. */
+  --color-dark-functional-filtered-out-base: #343856; /* Used for visual marks in charts that have been filtered out. */
+  --color-dark-functional-filtered-out-stronger: #5d6284; /* Used for smaller visual marks in charts that have been filtered out (min. contrast 3:1). */
+  --color-dark-functional-selection-0-base: #f4a81d;
+  --color-dark-functional-selection-0-stronger: #f4a81d;
+  --color-dark-functional-selection-1-stronger: #fd8750;
+  --color-dark-functional-selection-1-base: #f26829;
+  --color-dark-functional-selection-2-base: #bd53bd;
+  --color-dark-functional-selection-2-stronger: #ee7cee;
+  --color-dark-functional-selection-stroke: #ffffffe6; /* Stroke for selected elements within charts & UI. */
+  --color-dark-functional-selection-default-base: #008dc9; /* Used for smaller visual marks in charts that have been filtered out (min. contrast 3:1). */
+  --color-dark-functional-selection-default-stronger: #25b3ef;
+  --color-dark-brand-base: #008dc9; /* WHO blue */
+  --color-dark-brand-weaker: #1f4c7e; /* WHO blue with weaker contrast */
+  --color-dark-brand-stronger: #90d3fb; /* WHO blue with stronger contrast */
+  --color-dark-foreground-base: #eaeaea; /* Used for elements in the foreground that have a strong contrast to the background. */
+  --color-dark-foreground-weaker: #9597ae; /* Used for elements in the foreground that have a weaker contrast to the background (e.g. axes). */
+  --color-dark-foreground-weakest: #696c85; /* Used for elements in the foreground that have the weakest contrast to the background (e.g. ticks, help-lines) */
+  --color-dark-text-base: #eaeaea; /* Default text color for strong background contrast. */
+  --color-dark-text-weaker: #a9abbd; /* Text color with weaker background contrast. */
+  --color-dark-category-text-0: #f4a81d;
+  --color-dark-category-text-1: #fd8750;
+  --color-dark-category-text-2: #ee7cee;
+  --color-dark-category-text-3: #999ff5;
+  --color-dark-category-text-4: #25b3ef;
+  --color-dark-category-text-5: #39c671;
+  --color-dark-category-gender-male: #f4a81d;
+  --color-dark-category-gender-female: #8a91f3;
+  --color-dark-category-gender-misc: #39c671;
+  --color-dark-category-region-afro: #8a91f3;
+  --color-dark-category-region-amro: #f26829;
+  --color-dark-category-region-emro: #bd53bd;
+  --color-dark-category-region-euro: #008dc9;
+  --color-dark-category-region-wpro: #f4a81d;
+  --color-dark-category-region-searo: #39c671;
+  --color-dark-category-base-0: #f4a81d;
+  --color-dark-category-base-1: #f26829;
+  --color-dark-category-base-2: #bd53bd;
+  --color-dark-category-base-3: #8a91f3;
+  --color-dark-category-base-4: #008dc9;
+  --color-dark-category-base-5: #39c671;
+  --color-dark-category-stronger-0: #f4a81d;
+  --color-dark-category-stronger-1: #f26829;
+  --color-dark-category-stronger-2: #bd53bd;
+  --color-dark-category-stronger-3: #8a91f3;
+  --color-dark-category-stronger-4: #008dc9;
+  --color-dark-category-stronger-5: #39c671;
+  --color-dark-category-trend-worsening-base: #cf7e50;
+  --color-dark-category-trend-worsening-text: #cf7e50;
+  --color-dark-category-trend-stagnating-base: #b2a6cf;
+  --color-dark-category-trend-stagnating-text: #b2a6cf;
+  --color-dark-category-trend-improving-base: #27a3b4;
+  --color-dark-category-trend-improving-text: #27a3b4;
+  --color-dark-category-trend-unspecified-base: #97949a;
+  --color-dark-category-trend-unspecified-text: #97949a;
+  --color-dark-diverging-alt-negative-2: #ff857b;
+  --color-dark-diverging-alt-negative-1: #9a5a64;
+  --color-dark-diverging-alt-neutral: #38314d;
+  --color-dark-diverging-alt-positive-1: #517699;
+  --color-dark-diverging-alt-positive-2: #5ab1ea;
+  --color-dark-diverging-base-negative-2: #ffbf42;
+  --color-dark-diverging-base-negative-1: #9e7c4f;
+  --color-dark-diverging-base-neutral: #3e404f;
+  --color-dark-diverging-base-positive-1: #6286a2;
+  --color-dark-diverging-base-positive-2: #83d2ff;
+  --color-dark-sequential-brand-0: #2c3c54;
+  --color-dark-sequential-brand-1: #3f5f85;
+  --color-dark-sequential-brand-2: #6596bc;
+  --color-dark-sequential-brand-3: #83d2ff;
+  --color-dark-sequential-colorful-base-0: #454157;
+  --color-dark-sequential-colorful-base-1: #63679b;
+  --color-dark-sequential-colorful-base-2: #8592d2;
+  --color-dark-sequential-colorful-base-3: #b4ca90;
+  --color-dark-sequential-colorful-base-4: #fff48c;
+  --color-dark-sequential-colorful-alt-0: #2c3a5c;
+  --color-dark-sequential-colorful-alt-1: #7d448b;
+  --color-dark-sequential-colorful-alt-2: #c05b8b;
+  --color-dark-sequential-colorful-alt-3: #de8d65;
+  --color-dark-sequential-colorful-alt-4: #febb3b;
+  --color-dark-sequential-complementary-0: #513545;
+  --color-dark-sequential-complementary-1: #884e57;
+  --color-dark-sequential-complementary-2: #c26969;
+  --color-dark-sequential-complementary-3: #ff857b;
+  --fluid-parameter-scale-large: 1.414;
+  --fluid-parameter-scale-small: 1.33;
+  --fluid-parameter-scale-below-1-large: 1.15;
+  --fluid-parameter-scale-below-1-small: 1.15;
+  --fluid-parameter-base-font-size-large: 16;
+  --fluid-parameter-base-font-size-small: 14;
+  --fluid-parameter-max-content-width: 1600;
+  --fluid-parameter-min-content-width: 320;
+  --fluid-font-size-small-xs: 10.586;
+  --fluid-font-size-small-s: 12.174;
+  --fluid-font-size-small-m: 14;
+  --fluid-font-size-small-l: 18.62;
+  --fluid-font-size-small-xl: 24.765;
+  --fluid-font-size-small-xxl: 32.937;
+  --fluid-font-size-small-xxxl: 43.806;
+  --fluid-font-size-small-xxxxl: 58.262;
+  --fluid-font-size-large-xs: 12.098;
+  --fluid-font-size-large-s: 13.913;
+  --fluid-font-size-large-m: 16;
+  --fluid-font-size-large-l: 22.624;
+  --fluid-font-size-large-xl: 31.99;
+  --fluid-font-size-large-xxl: 45.234;
+  --fluid-font-size-large-xxxl: 63.961;
+  --fluid-font-size-large-xxxxl: 90.441;
+  --fluid-space-large-xxxs: 4px;
+  --fluid-space-large-xxs: 8px;
+  --fluid-space-large-xs: 12px;
+  --fluid-space-large-s: 16px;
+  --fluid-space-large-m: 24px;
+  --fluid-space-large-l: 32px;
+  --fluid-space-large-xl: 48px;
+  --fluid-space-large-xxl: 64px;
+  --fluid-space-large-xxxl: 96px;
+  --fluid-space-large-xxxxl: 128px;
+  --fluid-space-large-xxxxxl: 160px;
+  --fluid-space-small-xxxs: 3.5px;
+  --fluid-space-small-xxs: 7px;
+  --fluid-space-small-xs: 10.5px;
+  --fluid-space-small-s: 14px;
+  --fluid-space-small-m: 21px;
+  --fluid-space-small-l: 28px;
+  --fluid-space-small-xl: 42px;
+  --fluid-space-small-xxl: 56px;
+  --fluid-space-small-xxxl: 84px;
+  --fluid-space-small-xxxxl: 112px;
+  --fluid-space-small-xxxxxl: 140px;
+  --sizes-border-radius-base: 4px;
+  --sizes-max-content-width: 1440px;
+  --sizes-min-content-width: 320px;
+  --sizes-breakpoints-xs: 480px;
+  --sizes-breakpoints-sm: 640px;
+  --sizes-breakpoints-md: 960px;
+  --sizes-breakpoints-lg: 1200px;
+  --sizes-breakpoints-xl: 1440px;
+  --sizes-chart-size-classes-small: 320px;
+  --sizes-chart-size-classes-medium: 640px;
+  --sizes-chart-size-classes-large: 1440px;
+  --sizes-min-chart-size: 180px;
+  --sizeset-large-space-xxl: 28.5px;
+  --sizeset-large-space-xl: 21px;
+  --sizeset-large-space-l: 13.5px;
+  --sizeset-large-space-m: 12px;
+  --sizeset-large-space-s: 10.5px;
+  --sizeset-large-space-xs: 7.9px;
+  --sizeset-large-space-xxs: 5.3px;
+  --sizeset-large-font-size-xxxl: 112px;
+  --sizeset-large-font-size-xxl: 38px;
+  --sizeset-large-font-size-xl: 28px;
+  --sizeset-large-font-size-l: 18px;
+  --sizeset-large-font-size-m: 16px;
+  --sizeset-large-font-size-s: 14px;
+  --sizeset-medium-space-xxl: 21.1px;
+  --sizeset-medium-space-xl: 14.5px;
+  --sizeset-medium-space-l: 10.6px;
+  --sizeset-medium-space-m: 9.2px;
+  --sizeset-medium-space-s: 7.9px;
+  --sizeset-medium-space-xs: 5.9px;
+  --sizeset-medium-space-xxs: 4px;
+  --sizeset-medium-font-size-xxxl: 90px;
+  --sizeset-medium-font-size-xxl: 32px;
+  --sizeset-medium-font-size-xl: 22px;
+  --sizeset-medium-font-size-l: 16px;
+  --sizeset-medium-font-size-m: 14px;
+  --sizeset-medium-font-size-s: 12px;
+  --sizeset-small-space-xxl: 9px;
+  --sizeset-small-space-xl: 7px;
+  --sizeset-small-space-l: 6px;
+  --sizeset-small-space-m: 6px;
+  --sizeset-small-space-s: 5px;
+  --sizeset-small-space-xs: 3.8px;
+  --sizeset-small-space-xxs: 2.5px;
+  --sizeset-small-font-size-xxxl: 48px;
+  --sizeset-small-font-size-xxl: 18px;
+  --sizeset-small-font-size-xl: 14px;
+  --sizeset-small-font-size-l: 12px;
+  --sizeset-small-font-size-m: 12px;
+  --sizeset-small-font-size-s: 12px;
+}
