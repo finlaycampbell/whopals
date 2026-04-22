@@ -23,9 +23,9 @@ a palette variant where available.
 
 ### Palettes
 
-Swatches use `theme = "dark"`. Figure titles repeat the R call including
-`theme = "dark"`. PNGs are saved with a transparent page background
-where supported; the plot area uses a dark face so labels stay readable
+Sequential figures use default `theme` (`light`). Other swatches use
+`theme = "dark"`. PNGs use a transparent page background where
+supported; the plot area uses a dark face so axis labels stay readable
 on the light github.com page.
 
 **`pal_theme()`**
@@ -54,9 +54,15 @@ on the light github.com page.
 - **component**: base, secondary, alt
 - **theme**: light, dark
 
+**`pal_sequential("brand")`**
+
 ![](man/figures/README-pal-sequential-brand-1.png)<!-- -->
 
+**`pal_sequential("complementary")`**
+
 ![](man/figures/README-pal-sequential-complementary-1.png)<!-- -->
+
+**`pal_sequential("colorful")`**
 
 ![](man/figures/README-pal-sequential-colorful-1.png)<!-- -->
 
