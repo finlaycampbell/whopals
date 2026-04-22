@@ -178,14 +178,14 @@ plot_pal(whopals::pal_selection(theme = "dark"))
 
 ## Example column chart
 
-The snippets below build a simple column chart of random values by WHO
+The figures below show simple column charts of random values by WHO
 region: **`pal_background()`** for the plot and panel fills,
 **`pal_foreground()`** for axis titles and grid lines, **`pal_text()`** for
 axis tick labels, **`pal_brand()`** for the title, and **`pal_region()`**
-for bar fills. One figure uses **`theme = "dark"`** throughout; the other
+for bar fills. One figure uses **`theme = "dark"`**, the other
 uses **`theme = "light"`**.
 
-```{r example-column-data, echo=TRUE}
+```{r example-column-data, echo=FALSE}
 library(whopals)
 library(ggplot2)
 set.seed(42)
@@ -196,7 +196,7 @@ df_regions <- data.frame(
 )
 ```
 
-```{r example-column-dark, echo=TRUE, fig.height = 3.6, fig.width = 8}
+```{r example-column-dark, echo=FALSE, fig.height = 3.6, fig.width = 8}
 reg_dark <- whopals::pal_region(theme = "dark")
 df_dark <- df_regions
 df_dark$who_region <- factor(df_dark$who_region, levels = names(reg_dark))
@@ -209,34 +209,34 @@ ggplot(df_dark, aes(x = who_region, y = value, fill = who_region)) +
   theme(
     legend.position = "none",
     plot.background = element_rect(
-      fill = whopals::pal_background("base", "dark")[["base"]],
+      fill = unname(whopals::pal_background("base", "dark")),
       color = NA
     ),
     panel.background = element_rect(
-      fill = whopals::pal_background("weaker", "dark")[["weaker"]],
+      fill = unname(whopals::pal_background("weaker", "dark")),
       color = NA
     ),
     plot.title = element_text(
-      color = whopals::pal_brand("base", "dark")[["base"]],
+      color = unname(whopals::pal_brand("base", "dark")),
       face = "bold",
       size = 14
     ),
     axis.title = element_text(
-      color = whopals::pal_foreground("weaker", "dark")[["weaker"]]
+      color = unname(whopals::pal_foreground("weaker", "dark"))
     ),
     axis.text = element_text(
-      color = whopals::pal_text("base", "dark")[["base"]]
+      color = unname(whopals::pal_text("base", "dark"))
     ),
     axis.text.x = element_text(angle = 28, hjust = 1, vjust = 1),
     panel.grid.major.x = element_blank(),
     panel.grid.minor = element_blank(),
     panel.grid.major.y = element_line(
-      color = alpha(whopals::pal_foreground("weakest", "dark")[["weakest"]], 0.4)
+      color = alpha(unname(whopals::pal_foreground("weakest", "dark")), 0.4)
     )
   )
 ```
 
-```{r example-column-light, echo=TRUE, fig.height = 3.6, fig.width = 8}
+```{r example-column-light, echo=FALSE, fig.height = 3.6, fig.width = 8}
 reg_light <- whopals::pal_region(theme = "light")
 df_light <- df_regions
 df_light$who_region <- factor(df_light$who_region, levels = names(reg_light))
@@ -249,29 +249,29 @@ ggplot(df_light, aes(x = who_region, y = value, fill = who_region)) +
   theme(
     legend.position = "none",
     plot.background = element_rect(
-      fill = whopals::pal_background("base", "light")[["base"]],
+      fill = unname(whopals::pal_background("base", "light")),
       color = NA
     ),
     panel.background = element_rect(
-      fill = whopals::pal_background("weaker", "light")[["weaker"]],
+      fill = unname(whopals::pal_background("weaker", "light")),
       color = NA
     ),
     plot.title = element_text(
-      color = whopals::pal_brand("base", "light")[["base"]],
+      color = unname(whopals::pal_brand("base", "light")),
       face = "bold",
       size = 14
     ),
     axis.title = element_text(
-      color = whopals::pal_foreground("weaker", "light")[["weaker"]]
+      color = unname(whopals::pal_foreground("weaker", "light"))
     ),
     axis.text = element_text(
-      color = whopals::pal_text("base", "light")[["base"]]
+      color = unname(whopals::pal_text("base", "light"))
     ),
     axis.text.x = element_text(angle = 28, hjust = 1, vjust = 1),
     panel.grid.major.x = element_blank(),
     panel.grid.minor = element_blank(),
     panel.grid.major.y = element_line(
-      color = alpha(whopals::pal_foreground("weakest", "light")[["weakest"]], 0.35)
+      color = alpha(unname(whopals::pal_foreground("weakest", "light")), 0.35)
     )
   )
 ```
