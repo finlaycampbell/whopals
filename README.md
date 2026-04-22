@@ -16,14 +16,16 @@ Language](https://srhdteuwpubsa.z6.web.core.windows.net/gho/data/design-language
 pak::pak("finlaycampbell/whopals")
 ```
 
-After `library(whopals)`, use `whopals::pal_theme()`,
-`whopals::pal_category()`, `whopals::pal_region()`,
-`whopals::pal_sequential()`, `whopals::pal_diverging()`,
-`whopals::pal_functional()`, `whopals::pal_gender()`, and
-`whopals::pal_trend()` (the `whopals::` prefix is optional once the
-package is attached). Defaults for each function match the plots below.
+After installing, every palette is exposed as a `whopals::pal_*`
+function (for example `whopals::pal_theme()`, `whopals::pal_category()`,
+`whopals::pal_region()`, `whopals::pal_sequential()`,
+`whopals::pal_diverging()`, `whopals::pal_functional()`,
+`whopals::pal_gender()`, `whopals::pal_trend()`). You can always call
+them with the `whopals::` prefix; if you attach the package with
+`library(whopals)`, that prefix is optional. The plots below use each
+function’s defaults.
 
-### Arguments by palette
+### Options by palette
 
 **`pal_theme()`**
 
