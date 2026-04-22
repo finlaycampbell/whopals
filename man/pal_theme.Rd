@@ -26,5 +26,5 @@ Named character vector of hex colours.
 Matches the "Color themes" section of the design language. Pick a
 \strong{\code{variant}} branch, then either one \strong{\code{component}} (a single hex) or leave
 \strong{\code{component}} unset to return every immediate hex leaf under that branch
-(names \code{variant.component}).
+(names are the token keys only, e.g. \code{base}, \code{weaker}, not \code{brand.base}).
 }

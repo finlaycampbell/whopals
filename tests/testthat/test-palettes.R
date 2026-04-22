@@ -20,30 +20,31 @@ test_that("category base dark other matches embedded 99", {
 
 test_that("pal_theme single component returns one named hex", {
   t <- whopals::pal_theme("brand", "base", "light")
-  expect_identical(names(t), "brand.base")
+  expect_identical(names(t), "base")
   expect_identical(unname(t), "#008dc9")
 })
 
 test_that("pal_theme all brand components light match embedded tokens", {
   t <- whopals::pal_theme("brand", theme = "light")
-  expect_setequal(
-    names(t),
-    c("brand.base", "brand.stronger", "brand.weaker")
-  )
-  expect_identical(t[["brand.base"]], "#008dc9")
+  expect_setequal(names(t), c("base", "stronger", "weaker"))
+  expect_identical(t[["base"]], "#008dc9")
 })
 
-test_that("pal_selection base light includes stroke and slot names", {
+test_that("pal_selection base light uses short names in fixed order", {
   s <- whopals::pal_selection("base", "light")
-  expect_true("stroke" %in% names(s))
-  expect_true("0.base" %in% names(s))
+  expect_identical(names(s), c("0", "1", "2", "stroke", "default"))
   expect_identical(s[["stroke"]], "#1a1a1a")
-  expect_identical(s[["default.base"]], "#008dc9")
+  expect_identical(s[["default"]], "#008dc9")
 })
 
 test_that("pal_selection stronger dark default matches embedded", {
   s <- whopals::pal_selection("stronger", "dark")
-  expect_identical(s[["default.stronger"]], "#25b3ef")
+  expect_identical(s[["default"]], "#25b3ef")
+})
+
+test_that("pal_functional omits selection subtree", {
+  f <- whopals::pal_functional("light")
+  expect_false(any(grepl("^selection", names(f))))
 })
 
 test_that("sequential brand base light first stop is unchanged", {

@@ -84,7 +84,7 @@
 #' Matches the "Color themes" section of the design language. Pick a
 #' **`variant`** branch, then either one **`component`** (a single hex) or leave
 #' **`component`** unset to return every immediate hex leaf under that branch
-#' (names `variant.component`).
+#' (names are the token keys only, e.g. `base`, `weaker`, not `brand.base`).
 #'
 #' @param variant One of `brand`, `foreground`, `background`, `text`.
 #' @param component Token key under that variant (`base`, `weaker`, `stronger`,
@@ -119,8 +119,7 @@ pal_theme <- function(variant = c("brand", "foreground", "background", "text"),
       if (is.character(val) &&
         length(val) == 1L &&
         grepl("^#[0-9A-Fa-f]{6}$", val)) {
-        full_nm <- paste(variant, nm, sep = ".")
-        out <- c(out, stats::setNames(val, full_nm))
+        out <- c(out, stats::setNames(val, nm))
       }
     }
     if (length(out) == 0L) {
@@ -141,8 +140,7 @@ pal_theme <- function(variant = c("brand", "foreground", "background", "text"),
       call. = FALSE
     )
   }
-  nm <- paste(variant, component, sep = ".")
-  return(stats::setNames(val, nm))
+  return(stats::setNames(val, component))
 }
 
 #' Selection colours (multi-selection slots and stroke)
@@ -154,7 +152,8 @@ pal_theme <- function(variant = c("brand", "foreground", "background", "text"),
 #' @param component Either `base` or `stronger` (applied to list slots that
 #'   define both; `stroke` is always included unchanged).
 #' @param theme Either `"light"` or `"dark"`.
-#' @return Named character vector of hex colours.
+#' @return Named character vector of hex colours, always in order `0`, `1`,
+#'   `2`, `stroke`, `default` (missing keys are skipped).
 #' @export
 pal_selection <- function(component = c("base", "stronger"),
                           theme = c("light", "dark")) {
@@ -164,8 +163,13 @@ pal_selection <- function(component = c("base", "stronger"),
   if (is.null(sel)) {
     stop("No functional/selection tokens for theme ", theme, call. = FALSE)
   }
+  # Stable order for README plots and predictable indexing.
+  key_order <- c("0", "1", "2", "stroke", "default")
   out <- character()
-  for (nm in names(sel)) {
+  for (nm in key_order) {
+    if (!nm %in% names(sel)) {
+      next
+    }
     el <- sel[[nm]]
     if (is.character(el) &&
       length(el) == 1L &&
@@ -185,11 +189,17 @@ pal_selection <- function(component = c("base", "stronger"),
         !grepl("^#[0-9A-Fa-f]{6}$", hx)) {
         stop("Invalid hex for selection ", nm, ".", component, call. = FALSE)
       }
-      key <- paste(nm, component, sep = ".")
-      out <- c(out, stats::setNames(hx, key))
+      out <- c(out, stats::setNames(hx, nm))
     } else {
       stop("Unexpected structure for selection `", nm, "`.", call. = FALSE)
     }
+  }
+  extra <- setdiff(names(sel), key_order)
+  if (length(extra) > 0L) {
+    stop(
+      "Unexpected selection keys: ", paste(extra, collapse = ", "),
+      call. = FALSE
+    )
   }
   return(out)
 }
@@ -346,7 +356,10 @@ pal_diverging <- function(component = c("base", "alt"),
   .interp_hex_lab(stops, as.integer(n))
 }
 
-#' Functional colours (accent, focus, selection, not available, …)
+#' Functional colours (accent, focus, not available, …)
+#'
+#' Flattens all `functional/*` tokens except **`selection`** (use
+#' [pal_selection()] for those).
 #'
 #' @param theme Either `"light"` or `"dark"`.
 #' @return Named character vector of flattened `functional/*` hex values.
@@ -354,6 +367,7 @@ pal_diverging <- function(component = c("base", "alt"),
 pal_functional <- function(theme = c("light", "dark")) {
   theme <- match.arg(theme)
   fn <- .whopals_theme_colors(theme)[["functional"]]
+  fn <- fn[names(fn) != "selection"]
   .flatten_color_branch(fn)
 }
 

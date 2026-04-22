@@ -13,7 +13,8 @@ define both; \code{stroke} is always included unchanged).}
 \item{theme}{Either \code{"light"} or \code{"dark"}.}
 }
 \value{
-Named character vector of hex colours.
+Named character vector of hex colours, always in order \code{0}, \code{1},
+\code{2}, \code{stroke}, \code{default} (missing keys are skipped).
 }
 \description{
 Reads \code{functional/selection} from the embedded tokens. Each numbered slot

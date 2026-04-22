@@ -2,7 +2,7 @@
 % Please edit documentation in R/whopals.R
 \name{pal_functional}
 \alias{pal_functional}
-\title{Functional colours (accent, focus, selection, not available, …)}
+\title{Functional colours (accent, focus, not available, …)}
 \usage{
 pal_functional(theme = c("light", "dark"))
 }
@@ -13,5 +13,6 @@ pal_functional(theme = c("light", "dark"))
 Named character vector of flattened \verb{functional/*} hex values.
 }
 \description{
-Functional colours (accent, focus, selection, not available, …)
+Flattens all \verb{functional/*} tokens except \strong{\code{selection}} (use
+\code{\link[=pal_selection]{pal_selection()}} for those).
 }
