@@ -79,47 +79,23 @@
   unlist(lst[ord], use.names = TRUE)
 }
 
-# Shared logic for brand / foreground / background / text theme tokens.
+# One hex leaf under .whopals_colors[[theme]][[branch]][[component]].
 # @noRd
-.pal_theme_branch <- function(variant, component = NULL,
-                              theme = c("light", "dark")) {
-  theme <- match.arg(theme)
+.pal_theme_component <- function(branch, component, theme) {
   br <- .whopals_theme_colors(theme)
-  node <- br[[variant]]
+  node <- br[[branch]]
   if (is.null(node)) {
-    stop("Unknown theme branch `", variant, "` for theme ", theme, call. = FALSE)
+    stop("Unknown theme branch `", branch, "` for theme ", theme, call. = FALSE)
   }
   if (!is.list(node)) {
-    stop("Expected a list of theme tokens for `", variant, "`.",
-      call. = FALSE
-    )
+    stop("Expected a list of theme tokens for `", branch, "`.", call. = FALSE)
   }
-  comp_names <- names(node)
-  if (is.null(comp_names)) {
-    stop("Branch `", variant, "` has no named components.", call. = FALSE)
-  }
-  if (is.null(component)) {
-    out <- character()
-    for (nm in comp_names) {
-      val <- node[[nm]]
-      if (is.character(val) &&
-        length(val) == 1L &&
-        grepl("^#[0-9A-Fa-f]{6}$", val)) {
-        out <- c(out, stats::setNames(val, nm))
-      }
-    }
-    if (length(out) == 0L) {
-      stop("No immediate hex leaves under `", variant, "`.", call. = FALSE)
-    }
-    return(out)
-  }
-  component <- match.arg(component, choices = comp_names)
   val <- node[[component]]
   if (!is.character(val) ||
     length(val) != 1L ||
     !grepl("^#[0-9A-Fa-f]{6}$", val)) {
     stop(
-      "`", variant, "/", component, "` is not a single hex colour for theme ",
+      "`", branch, "/", component, "` is not a single hex colour for theme ",
       theme, ".",
       call. = FALSE
     )
@@ -129,43 +105,67 @@
 
 #' Brand theme colours
 #'
-#' Matches the design language **brand** tokens. Names are token keys only
-#' (`base`, `stronger`, `weaker`, …).
+#' Matches the design language **brand** tokens. Default **`component`** is
+#' **`base`**.
 #'
-#' @param component One of the keys under `brand` (`base`, `stronger`, …), or
-#'   `NULL` for every immediate hex leaf under **brand** for this **theme**.
+#' @param component One of `base`, `weaker`, `stronger`.
 #' @param theme Either `"light"` or `"dark"`.
-#' @return Named character vector of hex colours.
+#' @return Named character vector of length 1 (name = `component`).
 #' @export
-pal_brand <- function(component = NULL, theme = c("light", "dark")) {
-  .pal_theme_branch("brand", component, theme)
+pal_brand <- function(
+    component = c("base", "weaker", "stronger"),
+    theme = c("light", "dark")) {
+  component <- match.arg(component)
+  theme <- match.arg(theme)
+  .pal_theme_component("brand", component, theme)
 }
 
 #' Foreground theme colours
 #'
-#' @inheritParams pal_brand
-#' @return Named character vector of hex colours.
+#' Default **`component`** is **`base`**.
+#'
+#' @param component One of `base`, `weaker`, `weakest`.
+#' @param theme Either `"light"` or `"dark"`.
+#' @return Named character vector of length 1 (name = `component`).
 #' @export
-pal_foreground <- function(component = NULL, theme = c("light", "dark")) {
-  .pal_theme_branch("foreground", component, theme)
+pal_foreground <- function(
+    component = c("base", "weaker", "weakest"),
+    theme = c("light", "dark")) {
+  component <- match.arg(component)
+  theme <- match.arg(theme)
+  .pal_theme_component("foreground", component, theme)
 }
 
 #' Background theme colours
 #'
-#' @inheritParams pal_brand
-#' @return Named character vector of hex colours.
+#' Default **`component`** is **`base`**.
+#'
+#' @param component One of `base`, `weaker`, `selection`.
+#' @param theme Either `"light"` or `"dark"`.
+#' @return Named character vector of length 1 (name = `component`).
 #' @export
-pal_background <- function(component = NULL, theme = c("light", "dark")) {
-  .pal_theme_branch("background", component, theme)
+pal_background <- function(
+    component = c("base", "weaker", "selection"),
+    theme = c("light", "dark")) {
+  component <- match.arg(component)
+  theme <- match.arg(theme)
+  .pal_theme_component("background", component, theme)
 }
 
 #' Text theme colours
 #'
-#' @inheritParams pal_brand
-#' @return Named character vector of hex colours.
+#' Default **`component`** is **`base`**.
+#'
+#' @param component One of `base`, `weaker`.
+#' @param theme Either `"light"` or `"dark"`.
+#' @return Named character vector of length 1 (name = `component`).
 #' @export
-pal_text <- function(component = NULL, theme = c("light", "dark")) {
-  .pal_theme_branch("text", component, theme)
+pal_text <- function(
+    component = c("base", "weaker"),
+    theme = c("light", "dark")) {
+  component <- match.arg(component)
+  theme <- match.arg(theme)
+  .pal_theme_component("text", component, theme)
 }
 
 #' Selection colours (multi-selection slots and stroke)

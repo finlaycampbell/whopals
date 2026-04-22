@@ -152,26 +152,26 @@ plot_pal(whopals::pal_trend(theme = "dark"))
 plot_pal(whopals::pal_selection(theme = "dark"))
 ```
 
-**`pal_brand()`**
+**`pal_brand()`** (default `component = "base"`)
 
-```{r pal-brand, fig.height = 2.2}
+```{r pal-brand, fig.height = 1.5}
 plot_pal(whopals::pal_brand(theme = "dark"))
 ```
 
-**`pal_foreground()`**
+**`pal_foreground()`** (default `component = "base"`)
 
-```{r pal-foreground, fig.height = 2.2}
+```{r pal-foreground, fig.height = 1.5}
 plot_pal(whopals::pal_foreground(theme = "dark"))
 ```
 
-**`pal_background()`**
+**`pal_background()`** (default `component = "base"`)
 
-```{r pal-background, fig.height = 2.2}
+```{r pal-background, fig.height = 1.5}
 plot_pal(whopals::pal_background(theme = "dark"))
 ```
 
-**`pal_text()`**
+**`pal_text()`** (default `component = "base"`)
 
-```{r pal-text, fig.height = 2.2}
+```{r pal-text, fig.height = 1.5}
 plot_pal(whopals::pal_text(theme = "dark"))
 ```

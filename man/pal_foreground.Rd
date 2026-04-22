@@ -4,17 +4,19 @@
 \alias{pal_foreground}
 \title{Foreground theme colours}
 \usage{
-pal_foreground(component = NULL, theme = c("light", "dark"))
+pal_foreground(
+  component = c("base", "weaker", "weakest"),
+  theme = c("light", "dark")
+)
 }
 \arguments{
-\item{component}{One of the keys under \code{brand} (\code{base}, \code{stronger}, …), or
-\code{NULL} for every immediate hex leaf under \strong{brand} for this \strong{theme}.}
+\item{component}{One of \code{base}, \code{weaker}, \code{weakest}.}
 
 \item{theme}{Either \code{"light"} or \code{"dark"}.}
 }
 \value{
-Named character vector of hex colours.
+Named character vector of length 1 (name = \code{component}).
 }
 \description{
-Foreground theme colours
+Default \strong{\code{component}} is \strong{\code{base}}.
 }

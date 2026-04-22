@@ -4,17 +4,16 @@
 \alias{pal_text}
 \title{Text theme colours}
 \usage{
-pal_text(component = NULL, theme = c("light", "dark"))
+pal_text(component = c("base", "weaker"), theme = c("light", "dark"))
 }
 \arguments{
-\item{component}{One of the keys under \code{brand} (\code{base}, \code{stronger}, …), or
-\code{NULL} for every immediate hex leaf under \strong{brand} for this \strong{theme}.}
+\item{component}{One of \code{base}, \code{weaker}.}
 
 \item{theme}{Either \code{"light"} or \code{"dark"}.}
 }
 \value{
-Named character vector of hex colours.
+Named character vector of length 1 (name = \code{component}).
 }
 \description{
-Text theme colours
+Default \strong{\code{component}} is \strong{\code{base}}.
 }

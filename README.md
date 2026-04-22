@@ -62,18 +62,18 @@ variant where available. The available palettes are displayed below.
 
 ![](man/figures/README-pal-selection-1.png)<!-- -->
 
-**`pal_brand()`**
+**`pal_brand()`** (default `component = "base"`)
 
 ![](man/figures/README-pal-brand-1.png)<!-- -->
 
-**`pal_foreground()`**
+**`pal_foreground()`** (default `component = "base"`)
 
 ![](man/figures/README-pal-foreground-1.png)<!-- -->
 
-**`pal_background()`**
+**`pal_background()`** (default `component = "base"`)
 
 ![](man/figures/README-pal-background-1.png)<!-- -->
 
-**`pal_text()`**
+**`pal_text()`** (default `component = "base"`)
 
 ![](man/figures/README-pal-text-1.png)<!-- -->

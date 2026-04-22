@@ -4,18 +4,20 @@
 \alias{pal_brand}
 \title{Brand theme colours}
 \usage{
-pal_brand(component = NULL, theme = c("light", "dark"))
+pal_brand(
+  component = c("base", "weaker", "stronger"),
+  theme = c("light", "dark")
+)
 }
 \arguments{
-\item{component}{One of the keys under \code{brand} (\code{base}, \code{stronger}, …), or
-\code{NULL} for every immediate hex leaf under \strong{brand} for this \strong{theme}.}
+\item{component}{One of \code{base}, \code{weaker}, \code{stronger}.}
 
 \item{theme}{Either \code{"light"} or \code{"dark"}.}
 }
 \value{
-Named character vector of hex colours.
+Named character vector of length 1 (name = \code{component}).
 }
 \description{
-Matches the design language \strong{brand} tokens. Names are token keys only
-(\code{base}, \code{stronger}, \code{weaker}, …).
+Matches the design language \strong{brand} tokens. Default \strong{\code{component}} is
+\strong{\code{base}}.
 }
