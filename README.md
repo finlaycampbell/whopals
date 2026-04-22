@@ -40,8 +40,6 @@ on the light github.com page.
 
 ![](man/figures/README-pal-region-1.png)<!-- -->
 
-**`pal_sequential()`**
-
 **`pal_sequential("brand")`**
 
 ![](man/figures/README-pal-sequential-brand-1.png)<!-- -->
