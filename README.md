@@ -17,17 +17,11 @@ pak::pak("finlaycampbell/whopals")
 ```
 
 After installing, every palette is exposed as a `whopals::pal_*`
-function. Use `theme` to choose the light or dark token tree. Where a
-function exposes it, `variant` selects the scale family (for example
-which sequential scale), and `component` narrows to a sub-track or
-contrast level (for example base versus text, or base versus secondary
-within a family). Each function only accepts the arguments that apply to
-it; anything else is fixed by the design language.
+function. Use `theme` to choose a light or dark theme, `component` to
+specify the plot component (e.g. base vs text), and `variant` to select
+a palette variant where available.
 
-### Options by palette
-
-Examples use default arguments (including `theme = "light"`) unless the
-title states otherwise.
+### Palettes
 
 **`pal_theme()`**
 
