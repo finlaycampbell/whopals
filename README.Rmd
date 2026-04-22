@@ -116,10 +116,16 @@ plot_pal(whopals::pal_sequential("complementary"))
 plot_pal(whopals::pal_sequential("colorful"))
 ```
 
-**`pal_diverging()`**
+**`pal_diverging("base")`**
 
-```{r pal-diverging}
-plot_pal(whopals::pal_diverging(theme = "dark"))
+```{r pal-diverging-base, fig.height = 2.2}
+plot_pal(whopals::pal_diverging("base", theme = "dark"))
+```
+
+**`pal_diverging("alt")`**
+
+```{r pal-diverging-alt, fig.height = 2.2}
+plot_pal(whopals::pal_diverging("alt", theme = "dark"))
 ```
 
 **`pal_functional()`**

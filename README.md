@@ -38,9 +38,13 @@ variant where available. The available palettes are displayed below.
 
 ![](man/figures/README-pal-sequential-colorful-1.png)<!-- -->
 
-**`pal_diverging()`**
+**`pal_diverging("base")`**
 
-![](man/figures/README-pal-diverging-1.png)<!-- -->
+![](man/figures/README-pal-diverging-base-1.png)<!-- -->
+
+**`pal_diverging("alt")`**
+
+![](man/figures/README-pal-diverging-alt-1.png)<!-- -->
 
 **`pal_functional()`**
 
