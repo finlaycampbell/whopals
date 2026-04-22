@@ -4,16 +4,27 @@
 \alias{pal_theme}
 \title{Theme colours (brand, foreground, background, text)}
 \usage{
-pal_theme(theme = c("light", "dark"))
+pal_theme(
+  variant = c("brand", "foreground", "background", "text"),
+  component = NULL,
+  theme = c("light", "dark")
+)
 }
 \arguments{
+\item{variant}{One of \code{brand}, \code{foreground}, \code{background}, \code{text}.}
+
+\item{component}{Token key under that variant (\code{base}, \code{weaker}, \code{stronger},
+\code{weakest}, \code{selection}, etc., depending on \code{variant}). If \code{NULL}, all
+immediate hex children under \strong{\code{variant}} are returned.}
+
 \item{theme}{Either \code{"light"} or \code{"dark"}.}
 }
 \value{
-Named character vector (flattened paths under \code{brand}, \code{foreground},
-\code{background}, \code{text}).
+Named character vector of hex colours.
 }
 \description{
-Matches the "Color themes" section of the design language. Values come from
-the internal object \code{.whopals_colors} in \code{R/colors.R}.
+Matches the "Color themes" section of the design language. Pick a
+\strong{\code{variant}} branch, then either one \strong{\code{component}} (a single hex) or leave
+\strong{\code{component}} unset to return every immediate hex leaf under that branch
+(names \code{variant.component}).
 }

@@ -81,18 +81,117 @@
 
 #' Theme colours (brand, foreground, background, text)
 #'
-#' Matches the "Color themes" section of the design language. Values come from
-#' the internal object `.whopals_colors` in `R/colors.R`.
+#' Matches the "Color themes" section of the design language. Pick a
+#' **`variant`** branch, then either one **`component`** (a single hex) or leave
+#' **`component`** unset to return every immediate hex leaf under that branch
+#' (names `variant.component`).
 #'
+#' @param variant One of `brand`, `foreground`, `background`, `text`.
+#' @param component Token key under that variant (`base`, `weaker`, `stronger`,
+#'   `weakest`, `selection`, etc., depending on `variant`). If `NULL`, all
+#'   immediate hex children under **`variant`** are returned.
 #' @param theme Either `"light"` or `"dark"`.
-#' @return Named character vector (flattened paths under `brand`, `foreground`,
-#'   `background`, `text`).
+#' @return Named character vector of hex colours.
 #' @export
-pal_theme <- function(theme = c("light", "dark")) {
+pal_theme <- function(variant = c("brand", "foreground", "background", "text"),
+                      component = NULL,
+                      theme = c("light", "dark")) {
+  variant <- match.arg(variant)
   theme <- match.arg(theme)
   br <- .whopals_theme_colors(theme)
-  keep <- br[c("brand", "foreground", "background", "text")]
-  .flatten_color_branch(keep)
+  node <- br[[variant]]
+  if (is.null(node)) {
+    stop("Unknown variant `", variant, "` for theme ", theme, call. = FALSE)
+  }
+  if (!is.list(node)) {
+    stop("Expected a list of theme tokens for variant `", variant, "`.",
+      call. = FALSE
+    )
+  }
+  comp_names <- names(node)
+  if (is.null(comp_names)) {
+    stop("Variant `", variant, "` has no named components.", call. = FALSE)
+  }
+  if (is.null(component)) {
+    out <- character()
+    for (nm in comp_names) {
+      val <- node[[nm]]
+      if (is.character(val) &&
+        length(val) == 1L &&
+        grepl("^#[0-9A-Fa-f]{6}$", val)) {
+        full_nm <- paste(variant, nm, sep = ".")
+        out <- c(out, stats::setNames(val, full_nm))
+      }
+    }
+    if (length(out) == 0L) {
+      stop("No immediate hex leaves under variant `", variant, "`.",
+        call. = FALSE
+      )
+    }
+    return(out)
+  }
+  component <- match.arg(component, choices = comp_names)
+  val <- node[[component]]
+  if (!is.character(val) ||
+    length(val) != 1L ||
+    !grepl("^#[0-9A-Fa-f]{6}$", val)) {
+    stop(
+      "`", variant, ".", component, "` is not a single hex colour for theme ",
+      theme, ".",
+      call. = FALSE
+    )
+  }
+  nm <- paste(variant, component, sep = ".")
+  return(stats::setNames(val, nm))
+}
+
+#' Selection colours (multi-selection slots and stroke)
+#'
+#' Reads `functional/selection` from the embedded tokens. Each numbered slot
+#' and `default` expose **`base`** and **`stronger`**; **`stroke`** is a single
+#' hex shared across contexts.
+#'
+#' @param component Either `base` or `stronger` (applied to list slots that
+#'   define both; `stroke` is always included unchanged).
+#' @param theme Either `"light"` or `"dark"`.
+#' @return Named character vector of hex colours.
+#' @export
+pal_selection <- function(component = c("base", "stronger"),
+                          theme = c("light", "dark")) {
+  component <- match.arg(component)
+  theme <- match.arg(theme)
+  sel <- .whopals_theme_colors(theme)[["functional"]][["selection"]]
+  if (is.null(sel)) {
+    stop("No functional/selection tokens for theme ", theme, call. = FALSE)
+  }
+  out <- character()
+  for (nm in names(sel)) {
+    el <- sel[[nm]]
+    if (is.character(el) &&
+      length(el) == 1L &&
+      grepl("^#[0-9A-Fa-f]{6}$", el)) {
+      out <- c(out, stats::setNames(el, nm))
+    } else if (is.list(el)) {
+      hx <- el[[component]]
+      if (is.null(hx)) {
+        stop(
+          "Selection `", nm, "` has no `", component, "` for theme ", theme,
+          ".",
+          call. = FALSE
+        )
+      }
+      if (!is.character(hx) ||
+        length(hx) != 1L ||
+        !grepl("^#[0-9A-Fa-f]{6}$", hx)) {
+        stop("Invalid hex for selection ", nm, ".", component, call. = FALSE)
+      }
+      key <- paste(nm, component, sep = ".")
+      out <- c(out, stats::setNames(hx, key))
+    } else {
+      stop("Unexpected structure for selection `", nm, "`.", call. = FALSE)
+    }
+  }
+  return(out)
 }
 
 #' Nominal category colours (including optional "other")
@@ -100,7 +199,7 @@ pal_theme <- function(theme = c("light", "dark")) {
 #' Returns the main six-colour nominal pool (`0` … `5`, optionally `99` for
 #' "other") from the design language.
 #'
-#' @inheritParams pal_theme
+#' @param theme Either `"light"` or `"dark"`.
 #' @param component Contrast level: `base`, `stronger`, or `text` branches under
 #'   `category` in the embedded tokens.
 #' @param include_other If `TRUE`, include category `99` ("other") from the
@@ -132,7 +231,7 @@ pal_category <- function(component = c("base", "stronger", "text"),
 #' index as each region's base hue): AFRO→3, AMRO→1, EMRO→2, EUR→4,
 #' SEARO→5, WPRO→0.
 #'
-#' @inheritParams pal_theme
+#' @param theme Either `"light"` or `"dark"`.
 #' @param component `base` (from `category.region`) or `text` (from
 #'   `category.text` using the mapping above).
 #' @return Named vector with keys `afro`, `amro`, `emro`, `euro`, `searo`,
@@ -171,7 +270,7 @@ pal_region <- function(component = c("base", "text"),
 #' shorter scales on the design language site). For `colorful`, pick
 #' `component = "base"` or `"alt"` (two multi-hue tracks).
 #'
-#' @inheritParams pal_theme
+#' @param theme Either `"light"` or `"dark"`.
 #' @param variant Scale family: `brand`, `complementary`, or `colorful`.
 #' @param component For `brand` and `complementary`: `base` (all stops) or
 #'   `secondary` (omit the lightest stop). For `colorful`: `base` or `alt`.
@@ -221,7 +320,7 @@ pal_sequential <- function(
 #' Ordered from negative end → neutral → positive end, as on the design
 #' language site.
 #'
-#' @inheritParams pal_theme
+#' @param theme Either `"light"` or `"dark"`.
 #' @param component `base` or `alt`, matching token group names under
 #'   `diverging/`.
 #' @param n If `NULL`, return the five token stops. If an integer >= 2,
@@ -249,7 +348,7 @@ pal_diverging <- function(component = c("base", "alt"),
 
 #' Functional colours (accent, focus, selection, not available, …)
 #'
-#' @inheritParams pal_theme
+#' @param theme Either `"light"` or `"dark"`.
 #' @return Named character vector of flattened `functional/*` hex values.
 #' @export
 pal_functional <- function(theme = c("light", "dark")) {
@@ -260,7 +359,7 @@ pal_functional <- function(theme = c("light", "dark")) {
 
 #' Gender / sex category colours
 #'
-#' @inheritParams pal_theme
+#' @param theme Either `"light"` or `"dark"`.
 #' @return Named vector `male`, `female`, `misc`.
 #' @export
 pal_gender <- function(theme = c("light", "dark")) {
@@ -271,7 +370,7 @@ pal_gender <- function(theme = c("light", "dark")) {
 
 #' Trend category colours (worsening, stagnating, improving, unspecified)
 #'
-#' @inheritParams pal_theme
+#' @param theme Either `"light"` or `"dark"`.
 #' @param component Return `base` mark colours, `text` label colours, or `both`
 #'   as a flat list with `*.base` and `*.text` names.
 #' @export
