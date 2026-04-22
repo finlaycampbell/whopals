@@ -80,12 +80,8 @@ variant where available. The available palettes are displayed below.
 
 ## Example column chart
 
-The figures below show simple column charts of random values by WHO
-region: **`pal_background()`** for the plot and panel fills,
-**`pal_foreground()`** for axis titles and grid lines, **`pal_text()`**
-for axis tick labels, **`pal_brand()`** for the title, and
-**`pal_region()`** for bar fills. One figure uses **`theme = "dark"`**,
-the other uses **`theme = "light"`**.
+The figures below give an example of the color palettes using the light
+and dark themes.
 
 ![](man/figures/README-example-column-dark-1.png)<!-- -->
 
