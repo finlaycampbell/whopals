@@ -23,7 +23,10 @@ a palette variant where available.
 
 ### Palettes
 
-Figures below use `theme = "dark"` for the underlying WHO tokens.
+Swatches use `theme = "dark"`. Figure titles repeat the R call including
+`theme = "dark"`. PNGs are saved with a transparent page background
+where supported; the plot area uses a dark face so labels stay readable
+on the light github.com page.
 
 **`pal_theme()`**
 
