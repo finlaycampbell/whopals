@@ -40,6 +40,10 @@ renv/staging/
 # pkgdown output (if you add a site later)
 docs/
 
+# R CMD check / build artifacts
+*Rcheck/
+*.tar.gz
+
 # Compiled code in src/ (if added later)
 src/*.o
 src/*.so
