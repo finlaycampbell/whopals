@@ -83,6 +83,6 @@ variant where available. The available palettes are displayed below.
 The figures below give an example of the color palettes using the light
 and dark themes.
 
-![](man/figures/README-example-column-dark-1.png)<!-- -->
+![](man/figures/README-example-col-dark-1.png)<!-- -->
 
-![](man/figures/README-example-column-light-1.png)<!-- -->
+![](man/figures/README-example-col-light-1.png)<!-- -->

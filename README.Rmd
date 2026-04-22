@@ -180,7 +180,7 @@ plot_pal(whopals::pal_selection(theme = "dark"))
 
 The figures below give an example of the color palettes using the light and dark themes.
 
-```{r example-column-data, echo=FALSE}
+```{r example-col-data, echo=FALSE}
 library(whopals)
 library(ggplot2)
 set.seed(42)
@@ -191,82 +191,86 @@ df_regions <- data.frame(
 )
 ```
 
-```{r example-column-dark, echo=FALSE, fig.height = 3.6, fig.width = 8}
+```{r example-col-dark, echo=FALSE, fig.height = 3.6, fig.width = 8}
 reg_dark <- whopals::pal_region(theme = "dark")
 df_dark <- df_regions
 df_dark$who_region <- factor(df_dark$who_region, levels = names(reg_dark))
 
-ggplot(df_dark, aes(x = who_region, y = value, fill = who_region)) +
-  geom_col(width = 0.72) +
-  scale_fill_manual(values = reg_dark) +
-  labs(title = "Illustrative palettes (dark theme)", x = NULL, y = "Value") +
-  theme_minimal(base_size = 12) +
-  theme(
-    legend.position = "none",
-    plot.background = element_rect(
-      fill = unname(whopals::pal_background("base", "dark")),
-      color = NA
-    ),
-    panel.background = element_rect(
-      fill = unname(whopals::pal_background("base", "dark")),
-      color = NA
-    ),
-    plot.title = element_text(
-      color = unname(whopals::pal_brand("base", "dark")),
-      face = "bold",
-      size = 14
-    ),
-    axis.title = element_text(
-      color = unname(whopals::pal_foreground("base", "dark"))
-    ),
-    axis.text = element_text(
-      color = unname(whopals::pal_text("base", "dark"))
-    ),
-    axis.text.x = element_text(angle = 28, hjust = 1, vjust = 1),
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.grid.major.y = element_line(
-      color = alpha(unname(whopals::pal_foreground("weakest", "dark")), 0.4)
+print(
+  ggplot(df_dark, aes(x = who_region, y = value, fill = who_region)) +
+    geom_col(width = 0.72) +
+    scale_fill_manual(values = reg_dark) +
+    labs(title = "Illustrative palettes (dark theme)", x = NULL, y = "Value") +
+    theme_minimal(base_size = 12) +
+    theme(
+      legend.position = "none",
+      plot.background = element_rect(
+        fill = unname(whopals::pal_background("base", "dark")),
+        color = NA
+      ),
+      panel.background = element_rect(
+        fill = unname(whopals::pal_background("base", "dark")),
+        color = NA
+      ),
+      plot.title = element_text(
+        color = unname(whopals::pal_brand("base", "dark")),
+        face = "bold",
+        size = 14
+      ),
+      axis.title = element_text(
+        color = unname(whopals::pal_foreground("base", "dark"))
+      ),
+      axis.text = element_text(
+        color = unname(whopals::pal_text("base", "dark"))
+      ),
+      axis.text.x = element_text(angle = 28, hjust = 1, vjust = 1),
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor = element_blank(),
+      panel.grid.major.y = element_line(
+        color = alpha(unname(whopals::pal_foreground("weakest", "dark")), 0.4)
+      )
     )
-  )
+)
 ```
 
-```{r example-column-light, echo=FALSE, fig.height = 3.6, fig.width = 8}
+```{r example-col-light, echo=FALSE, fig.height = 3.6, fig.width = 8}
 reg_light <- whopals::pal_region(theme = "light")
 df_light <- df_regions
 df_light$who_region <- factor(df_light$who_region, levels = names(reg_light))
 
-ggplot(df_light, aes(x = who_region, y = value, fill = who_region)) +
-  geom_col(width = 0.72) +
-  scale_fill_manual(values = reg_light) +
-  labs(title = "Illustrative palettes (light theme)", x = NULL, y = "Value") +
-  theme_minimal(base_size = 12) +
-  theme(
-    legend.position = "none",
-    plot.background = element_rect(
-      fill = unname(whopals::pal_background("base", "light")),
-      color = NA
-    ),
-    panel.background = element_rect(
-      fill = unname(whopals::pal_background("base", "light")),
-      color = NA
-    ),
-    plot.title = element_text(
-      color = unname(whopals::pal_brand("base", "light")),
-      face = "bold",
-      size = 14
-    ),
-    axis.title = element_text(
-      color = unname(whopals::pal_foreground("base", "light"))
-    ),
-    axis.text = element_text(
-      color = unname(whopals::pal_text("base", "light"))
-    ),
-    axis.text.x = element_text(angle = 28, hjust = 1, vjust = 1),
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.grid.major.y = element_line(
-      color = alpha(unname(whopals::pal_foreground("weakest", "light")), 0.35)
+print(
+  ggplot(df_light, aes(x = who_region, y = value, fill = who_region)) +
+    geom_col(width = 0.72) +
+    scale_fill_manual(values = reg_light) +
+    labs(title = "Illustrative palettes (light theme)", x = NULL, y = "Value") +
+    theme_minimal(base_size = 12) +
+    theme(
+      legend.position = "none",
+      plot.background = element_rect(
+        fill = unname(whopals::pal_background("base", "light")),
+        color = NA
+      ),
+      panel.background = element_rect(
+        fill = unname(whopals::pal_background("base", "light")),
+        color = NA
+      ),
+      plot.title = element_text(
+        color = unname(whopals::pal_brand("base", "light")),
+        face = "bold",
+        size = 14
+      ),
+      axis.title = element_text(
+        color = unname(whopals::pal_foreground("base", "light"))
+      ),
+      axis.text = element_text(
+        color = unname(whopals::pal_text("base", "light"))
+      ),
+      axis.text.x = element_text(angle = 28, hjust = 1, vjust = 1),
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor = element_blank(),
+      panel.grid.major.y = element_line(
+        color = alpha(unname(whopals::pal_foreground("weakest", "light")), 0.35)
+      )
     )
-  )
+)
 ```
