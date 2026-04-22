@@ -79,38 +79,24 @@
   unlist(lst[ord], use.names = TRUE)
 }
 
-#' Theme colours (brand, foreground, background, text)
-#'
-#' Matches the "Color themes" section of the design language. Pick a
-#' **`variant`** branch, then either one **`component`** (a single hex) or leave
-#' **`component`** unset to return every immediate hex leaf under that branch
-#' (names are the token keys only, e.g. `base`, `weaker`, not `brand.base`).
-#'
-#' @param variant One of `brand`, `foreground`, `background`, `text`.
-#' @param component Token key under that variant (`base`, `weaker`, `stronger`,
-#'   `weakest`, `selection`, etc., depending on `variant`). If `NULL`, all
-#'   immediate hex children under **`variant`** are returned.
-#' @param theme Either `"light"` or `"dark"`.
-#' @return Named character vector of hex colours.
-#' @export
-pal_theme <- function(variant = c("brand", "foreground", "background", "text"),
-                      component = NULL,
-                      theme = c("light", "dark")) {
-  variant <- match.arg(variant)
+# Shared logic for brand / foreground / background / text theme tokens.
+# @noRd
+.pal_theme_branch <- function(variant, component = NULL,
+                              theme = c("light", "dark")) {
   theme <- match.arg(theme)
   br <- .whopals_theme_colors(theme)
   node <- br[[variant]]
   if (is.null(node)) {
-    stop("Unknown variant `", variant, "` for theme ", theme, call. = FALSE)
+    stop("Unknown theme branch `", variant, "` for theme ", theme, call. = FALSE)
   }
   if (!is.list(node)) {
-    stop("Expected a list of theme tokens for variant `", variant, "`.",
+    stop("Expected a list of theme tokens for `", variant, "`.",
       call. = FALSE
     )
   }
   comp_names <- names(node)
   if (is.null(comp_names)) {
-    stop("Variant `", variant, "` has no named components.", call. = FALSE)
+    stop("Branch `", variant, "` has no named components.", call. = FALSE)
   }
   if (is.null(component)) {
     out <- character()
@@ -123,9 +109,7 @@ pal_theme <- function(variant = c("brand", "foreground", "background", "text"),
       }
     }
     if (length(out) == 0L) {
-      stop("No immediate hex leaves under variant `", variant, "`.",
-        call. = FALSE
-      )
+      stop("No immediate hex leaves under `", variant, "`.", call. = FALSE)
     }
     return(out)
   }
@@ -135,12 +119,53 @@ pal_theme <- function(variant = c("brand", "foreground", "background", "text"),
     length(val) != 1L ||
     !grepl("^#[0-9A-Fa-f]{6}$", val)) {
     stop(
-      "`", variant, ".", component, "` is not a single hex colour for theme ",
+      "`", variant, "/", component, "` is not a single hex colour for theme ",
       theme, ".",
       call. = FALSE
     )
   }
   return(stats::setNames(val, component))
+}
+
+#' Brand theme colours
+#'
+#' Matches the design language **brand** tokens. Names are token keys only
+#' (`base`, `stronger`, `weaker`, …).
+#'
+#' @param component One of the keys under `brand` (`base`, `stronger`, …), or
+#'   `NULL` for every immediate hex leaf under **brand** for this **theme**.
+#' @param theme Either `"light"` or `"dark"`.
+#' @return Named character vector of hex colours.
+#' @export
+pal_brand <- function(component = NULL, theme = c("light", "dark")) {
+  .pal_theme_branch("brand", component, theme)
+}
+
+#' Foreground theme colours
+#'
+#' @inheritParams pal_brand
+#' @return Named character vector of hex colours.
+#' @export
+pal_foreground <- function(component = NULL, theme = c("light", "dark")) {
+  .pal_theme_branch("foreground", component, theme)
+}
+
+#' Background theme colours
+#'
+#' @inheritParams pal_brand
+#' @return Named character vector of hex colours.
+#' @export
+pal_background <- function(component = NULL, theme = c("light", "dark")) {
+  .pal_theme_branch("background", component, theme)
+}
+
+#' Text theme colours
+#'
+#' @inheritParams pal_brand
+#' @return Named character vector of hex colours.
+#' @export
+pal_text <- function(component = NULL, theme = c("light", "dark")) {
+  .pal_theme_branch("text", component, theme)
 }
 
 #' Selection colours (multi-selection slots and stroke)

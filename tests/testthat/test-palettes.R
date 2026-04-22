@@ -18,16 +18,21 @@ test_that("category base dark other matches embedded 99", {
   expect_identical(p[["99"]], "#696c85")
 })
 
-test_that("pal_theme single component returns one named hex", {
-  t <- whopals::pal_theme("brand", "base", "light")
+test_that("pal_brand single component returns one named hex", {
+  t <- whopals::pal_brand("base", "light")
   expect_identical(names(t), "base")
   expect_identical(unname(t), "#008dc9")
 })
 
-test_that("pal_theme all brand components light match embedded tokens", {
-  t <- whopals::pal_theme("brand", theme = "light")
+test_that("pal_brand all components light match embedded tokens", {
+  t <- whopals::pal_brand(theme = "light")
   expect_setequal(names(t), c("base", "stronger", "weaker"))
   expect_identical(t[["base"]], "#008dc9")
+})
+
+test_that("pal_text dark exposes base and weaker", {
+  t <- whopals::pal_text(theme = "dark")
+  expect_setequal(names(t), c("base", "weaker"))
 })
 
 test_that("pal_selection base light uses short names in fixed order", {
