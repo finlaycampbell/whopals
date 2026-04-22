@@ -81,16 +81,11 @@ Sequential figures use default `theme` (`light`). Other swatches use `theme = "d
 
 **`pal_theme()`**
 
-* **theme**: light, dark
-
 ```{r pal-theme, fig.height = 2.8}
 plot_pal(whopals::pal_theme("dark"))
 ```
 
 **`pal_category()`**
-
-* **component**: base, stronger, text
-* **theme**: light, dark
 
 ```{r pal-category}
 plot_pal(whopals::pal_category(theme = "dark"))
@@ -98,18 +93,11 @@ plot_pal(whopals::pal_category(theme = "dark"))
 
 **`pal_region()`**
 
-* **component**: base, text
-* **theme**: light, dark
-
 ```{r pal-region}
 plot_pal(whopals::pal_region(theme = "dark"))
 ```
 
 **`pal_sequential()`**
-
-* **variant**: brand, complementary, colorful
-* **component**: base, secondary, alt
-* **theme**: light, dark
 
 **`pal_sequential("brand")`**
 
@@ -131,16 +119,11 @@ plot_pal(whopals::pal_sequential("colorful"))
 
 **`pal_diverging()`**
 
-* **component**: base, alt
-* **theme**: light, dark
-
 ```{r pal-diverging}
 plot_pal(whopals::pal_diverging(theme = "dark"))
 ```
 
 **`pal_functional()`**
-
-* **theme**: light, dark
 
 ```{r pal-functional, fig.height = 3.2}
 plot_pal(whopals::pal_functional("dark"))
@@ -148,16 +131,11 @@ plot_pal(whopals::pal_functional("dark"))
 
 **`pal_gender()`**
 
-* **theme**: light, dark
-
 ```{r pal-gender}
 plot_pal(whopals::pal_gender("dark"))
 ```
 
 **`pal_trend()`**
-
-* **component**: base, text, both
-* **theme**: light, dark
 
 ```{r pal-trend}
 plot_pal(whopals::pal_trend(theme = "dark"))

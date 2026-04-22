@@ -30,29 +30,17 @@ on the light github.com page.
 
 **`pal_theme()`**
 
-- **theme**: light, dark
-
 ![](man/figures/README-pal-theme-1.png)<!-- -->
 
 **`pal_category()`**
-
-- **component**: base, stronger, text
-- **theme**: light, dark
 
 ![](man/figures/README-pal-category-1.png)<!-- -->
 
 **`pal_region()`**
 
-- **component**: base, text
-- **theme**: light, dark
-
 ![](man/figures/README-pal-region-1.png)<!-- -->
 
 **`pal_sequential()`**
-
-- **variant**: brand, complementary, colorful
-- **component**: base, secondary, alt
-- **theme**: light, dark
 
 **`pal_sequential("brand")`**
 
@@ -68,26 +56,16 @@ on the light github.com page.
 
 **`pal_diverging()`**
 
-- **component**: base, alt
-- **theme**: light, dark
-
 ![](man/figures/README-pal-diverging-1.png)<!-- -->
 
 **`pal_functional()`**
-
-- **theme**: light, dark
 
 ![](man/figures/README-pal-functional-1.png)<!-- -->
 
 **`pal_gender()`**
 
-- **theme**: light, dark
-
 ![](man/figures/README-pal-gender-1.png)<!-- -->
 
 **`pal_trend()`**
-
-- **component**: base, text, both
-- **theme**: light, dark
 
 ![](man/figures/README-pal-trend-1.png)<!-- -->
