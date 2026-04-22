@@ -1,6 +1,50 @@
-.Rproj.user
+# R / session
 .Rhistory
+.Rapp.history
 .RData
+.RDataTmp
 .Ruserdata
+
+# RStudio
+.Rproj.user/
+
+# Local env (secrets); use .Renviron.example for documented vars
+.Renviron
+
+# knitr / R Markdown intermediates
+*_cache/
+*_files/
+
+# Quarto
 .quarto/
+
+# README knit artifact (output is README.md)
 README.html
+
+# Reverse-dependency checks
+revdep/
+
+# Test coverage
+covr/
+coverage.xml
+
+# renv local library (keep renv.lock, renv/activate.R, etc.)
+renv/library/
+renv/local/
+renv/cellar/
+renv/lock/
+renv/python/
+renv/sandbox/
+renv/staging/
+
+# pkgdown output (if you add a site later)
+docs/
+
+# Compiled code in src/ (if added later)
+src/*.o
+src/*.so
+src/*.dll
+
+# macOS / Windows
+.DS_Store
+Thumbs.db
