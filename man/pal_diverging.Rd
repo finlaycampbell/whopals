@@ -4,10 +4,11 @@
 \alias{pal_diverging}
 \title{Diverging scales (\code{base} or \code{alt})}
 \usage{
-pal_diverging(name = c("base", "alt"), theme = c("light", "dark"), n = NULL)
+pal_diverging(variant = c("base", "alt"), theme = c("light", "dark"), n = NULL)
 }
 \arguments{
-\item{name}{\code{base} or \code{alt}, matching token group names.}
+\item{variant}{\code{base} or \code{alt}, matching token group names under
+\verb{diverging/}.}
 
 \item{theme}{Either \code{"light"} or \code{"dark"}.}
 

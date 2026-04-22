@@ -5,19 +5,23 @@
 \title{Nominal category colours (including optional "other")}
 \usage{
 pal_category(
-  strength = c("base", "stronger", "text"),
+  name = c("nominal"),
+  variant = c("base", "stronger", "text"),
   theme = c("light", "dark"),
   include_other = FALSE
 )
 }
 \arguments{
-\item{strength}{One of \code{base}, \code{stronger}, or \code{text} (mapped strengths from
-the design tokens).}
+\item{name}{Palette key from the design language: \code{nominal} is the main
+six-colour category pool (\code{0} … \code{5}, optionally \code{99} for "other").}
+
+\item{variant}{Contrast level: \code{base}, \code{stronger}, or \code{text} branches under
+\code{category} in the embedded tokens.}
 
 \item{theme}{Either \code{"light"} or \code{"dark"}.}
 
 \item{include_other}{If \code{TRUE}, include category \code{99} ("other") from the
-embedded tokens (\verb{category.<strength>$99}, merged at build time from the
+embedded tokens (\verb{category.<variant>$99}, merged at build time from the
 WHO design language spec).}
 }
 \value{

@@ -98,22 +98,26 @@ pal_theme <- function(theme = c("light", "dark")) {
 #' Nominal category colours (including optional "other")
 #'
 #' @inheritParams pal_theme
-#' @param strength One of `base`, `stronger`, or `text` (mapped strengths from
-#'   the design tokens).
+#' @param name Palette key from the design language: `nominal` is the main
+#'   six-colour category pool (`0` … `5`, optionally `99` for "other").
+#' @param variant Contrast level: `base`, `stronger`, or `text` branches under
+#'   `category` in the embedded tokens.
 #' @param include_other If `TRUE`, include category `99` ("other") from the
-#'   embedded tokens (`category.<strength>$99`, merged at build time from the
+#'   embedded tokens (`category.<variant>$99`, merged at build time from the
 #'   WHO design language spec).
 #' @return Named character vector `0` … `5`, plus `99` when requested.
 #' @export
-pal_category <- function(strength = c("base", "stronger", "text"),
-                           theme = c("light", "dark"),
-                           include_other = FALSE) {
-  strength <- match.arg(strength)
+pal_category <- function(name = c("nominal"),
+                         variant = c("base", "stronger", "text"),
+                         theme = c("light", "dark"),
+                         include_other = FALSE) {
+  name <- match.arg(name)
+  variant <- match.arg(variant)
   theme <- match.arg(theme)
   cats <- .whopals_theme_colors(theme)[["category"]]
-  block <- cats[[strength]]
+  block <- cats[[variant]]
   if (is.null(block)) {
-    stop("No category/", strength, " for theme ", theme, call. = FALSE)
+    stop("No category/", variant, " for theme ", theme, call. = FALSE)
   }
   out <- unlist(block, use.names = TRUE)
   if (!include_other) {
@@ -164,41 +168,43 @@ pal_region <- function(variant = c("base", "text"),
 #' Sequential scales (`brand`, `complementary`, `colorful`)
 #'
 #' Stops match the embedded token keys (low to high). For `brand` and
-#' `complementary`, `variant = "secondary"` drops the lightest stop to match
-#' the shorter scales on the design language site.
+#' `complementary`, `variant = "secondary"` drops the lightest stop (the shorter
+#' scales on the design language site). For `colorful`, pick `variant = "base"`
+#' or `"alt"` (two multi-hue tracks).
 #'
 #' @inheritParams pal_theme
-#' @param scale One of `brand`, `complementary`, `colorful_base`,
-#'   `colorful_alt`.
-#' @param variant `full` or `secondary` (only affects `brand` and
-#'   `complementary`).
+#' @param name Scale family: `brand`, `complementary`, or `colorful`.
+#' @param variant For `brand` and `complementary`: `base` (all stops) or
+#'   `secondary` (omit the lightest stop). For `colorful`: `base` or `alt`.
 #' @param n If `NULL`, return the discrete token stops. If a positive integer,
 #'   interpolate in CIELAB space between those stops to length `n`.
 #' @return Unnamed (if `n` set) or named character vector of hex colours.
 #' @export
-pal_sequential <- function(scale = c(
-                             "brand", "complementary",
-                             "colorful_base", "colorful_alt"
-                           ),
-                         variant = c("full", "secondary"),
-                         theme = c("light", "dark"),
-                         n = NULL) {
-  scale <- match.arg(scale)
-  variant <- match.arg(variant)
+pal_sequential <- function(name = c("brand", "complementary", "colorful"),
+                           variant = "base",
+                           theme = c("light", "dark"),
+                           n = NULL) {
+  name <- match.arg(name)
   theme <- match.arg(theme)
   seq_block <- .whopals_theme_colors(theme)[["sequential"]]
-  stops <- switch(scale,
-    brand = .ordered_stops(seq_block[["brand"]]),
-    complementary = .ordered_stops(seq_block[["complementary"]]),
-    colorful_base = .ordered_stops(seq_block[["colorful"]][["base"]]),
-    colorful_alt = .ordered_stops(seq_block[["colorful"]][["alt"]]),
-    stop("Unknown scale: ", scale, call. = FALSE)
-  )
-  if (variant == "secondary" && scale %in% c("brand", "complementary")) {
-    if (length(stops) < 3L) {
-      stop("Not enough stops for secondary variant.", call. = FALSE)
+  if (name %in% c("brand", "complementary")) {
+    variant <- match.arg(variant, c("base", "secondary"))
+    stops <- .ordered_stops(seq_block[[name]])
+    if (variant == "secondary") {
+      if (length(stops) < 3L) {
+        stop("Not enough stops for secondary variant.", call. = FALSE)
+      }
+      stops <- stops[-1L]
     }
-    stops <- stops[-1L]
+  } else {
+    variant <- match.arg(variant, c("base", "alt"))
+    col <- seq_block[["colorful"]][[variant]]
+    if (is.null(col)) {
+      stop("No sequential/colorful/", variant, " for theme ", theme,
+        call. = FALSE
+      )
+    }
+    stops <- .ordered_stops(col)
   }
   if (is.null(n)) {
     return(stops)
@@ -216,19 +222,20 @@ pal_sequential <- function(scale = c(
 #' language site.
 #'
 #' @inheritParams pal_theme
-#' @param name `base` or `alt`, matching token group names.
+#' @param variant `base` or `alt`, matching token group names under
+#'   `diverging/`.
 #' @param n If `NULL`, return the five token stops. If an integer >= 2,
 #'   interpolate in CIELAB space to length `n`.
 #' @return Named vector with keys `negative-2`, `negative-1`, `neutral`,
 #'   `positive-1`, `positive-2`, unless `n` is set (then unnamed interpolated
 #'   vector).
 #' @export
-pal_diverging <- function(name = c("base", "alt"),
+pal_diverging <- function(variant = c("base", "alt"),
                           theme = c("light", "dark"),
                           n = NULL) {
-  name <- match.arg(name)
+  variant <- match.arg(variant)
   theme <- match.arg(theme)
-  div <- .whopals_theme_colors(theme)[["diverging"]][[name]]
+  div <- .whopals_theme_colors(theme)[["diverging"]][[variant]]
   keys <- c("negative-2", "negative-1", "neutral", "positive-1", "positive-2")
   stops <- vapply(keys, function(k) div[[k]], character(1L), USE.NAMES = TRUE)
   if (is.null(n)) {
