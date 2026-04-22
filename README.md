@@ -18,13 +18,21 @@ variant where available. The available palettes are displayed below.
 
 ------------------------------------------------------------------------
 
-**`pal_category()`**
-
-![](man/figures/README-pal-category-1.png)<!-- -->
-
 **`pal_region()`**
 
 ![](man/figures/README-pal-region-1.png)<!-- -->
+
+**`pal_trend()`**
+
+![](man/figures/README-pal-trend-1.png)<!-- -->
+
+**`pal_gender()`**
+
+![](man/figures/README-pal-gender-1.png)<!-- -->
+
+**`pal_category()`**
+
+![](man/figures/README-pal-category-1.png)<!-- -->
 
 **`pal_sequential("brand")`**
 
@@ -46,22 +54,6 @@ variant where available. The available palettes are displayed below.
 
 ![](man/figures/README-pal-diverging-alt-1.png)<!-- -->
 
-**`pal_functional()`**
-
-![](man/figures/README-pal-functional-1.png)<!-- -->
-
-**`pal_gender()`**
-
-![](man/figures/README-pal-gender-1.png)<!-- -->
-
-**`pal_trend()`**
-
-![](man/figures/README-pal-trend-1.png)<!-- -->
-
-**`pal_selection()`**
-
-![](man/figures/README-pal-selection-1.png)<!-- -->
-
 **`pal_brand()`**
 
 ![](man/figures/README-pal-brand-1.png)<!-- -->
@@ -77,3 +69,11 @@ variant where available. The available palettes are displayed below.
 **`pal_text()`**
 
 ![](man/figures/README-pal-text-1.png)<!-- -->
+
+**`pal_functional()`**
+
+![](man/figures/README-pal-functional-1.png)<!-- -->
+
+**`pal_selection()`**
+
+![](man/figures/README-pal-selection-1.png)<!-- -->

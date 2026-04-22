@@ -86,16 +86,28 @@ plot_pal <- function(x) {
 }
 ```
 
-**`pal_category()`**
-
-```{r pal-category}
-plot_pal(whopals::pal_category(theme = "dark"))
-```
-
 **`pal_region()`**
 
 ```{r pal-region}
 plot_pal(whopals::pal_region(theme = "dark"))
+```
+
+**`pal_trend()`**
+
+```{r pal-trend}
+plot_pal(whopals::pal_trend(theme = "dark"))
+```
+
+**`pal_gender()`**
+
+```{r pal-gender}
+plot_pal(whopals::pal_gender("dark"))
+```
+
+**`pal_category()`**
+
+```{r pal-category}
+plot_pal(whopals::pal_category(theme = "dark"))
 ```
 
 **`pal_sequential("brand")`**
@@ -128,30 +140,6 @@ plot_pal(whopals::pal_diverging("base", theme = "dark"))
 plot_pal(whopals::pal_diverging("alt", theme = "dark"))
 ```
 
-**`pal_functional()`**
-
-```{r pal-functional, fig.height = 3.2}
-plot_pal(whopals::pal_functional("dark"))
-```
-
-**`pal_gender()`**
-
-```{r pal-gender}
-plot_pal(whopals::pal_gender("dark"))
-```
-
-**`pal_trend()`**
-
-```{r pal-trend}
-plot_pal(whopals::pal_trend(theme = "dark"))
-```
-
-**`pal_selection()`**
-
-```{r pal-selection, fig.height = 2.8}
-plot_pal(whopals::pal_selection(theme = "dark"))
-```
-
 **`pal_brand()`**
 
 ```{r pal-brand, fig.height = 1.5}
@@ -174,4 +162,16 @@ plot_pal(whopals::pal_background(theme = "dark"))
 
 ```{r pal-text, fig.height = 1.5}
 plot_pal(whopals::pal_text(theme = "dark"))
+```
+
+**`pal_functional()`**
+
+```{r pal-functional, fig.height = 3.2}
+plot_pal(whopals::pal_functional("dark"))
+```
+
+**`pal_selection()`**
+
+```{r pal-selection, fig.height = 2.8}
+plot_pal(whopals::pal_selection(theme = "dark"))
 ```
