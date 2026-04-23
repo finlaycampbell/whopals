@@ -11,12 +11,12 @@ colours into R. Install it using:
 pak::pak("finlaycampbell/whopals")
 ```
 
+## Palettes
+
 Palettes are exposed as `whopals::pal_*` functions. Use the `theme`
 argument to specify a light or dark theme, `component` to specify the
 plot component such as text or base, and `variant` to select a palette
 variant where available. The available palettes are displayed below.
-
-------------------------------------------------------------------------
 
 **`pal_region()`**
 
@@ -78,11 +78,15 @@ variant where available. The available palettes are displayed below.
 
 ![](man/figures/README-pal-selection-1.png)<!-- -->
 
-## Example column chart
+## Themes
 
-The figures below give an example of the color palettes using the light
-and dark themes.
+The basic design guidelines are implemented as `ggplot2` themes and
+displayed below.
+
+**`theme_who_dark()`**
 
 ![](man/figures/README-example-col-dark-1.png)<!-- -->
+
+**`theme_who_light()`**
 
 ![](man/figures/README-example-col-light-1.png)<!-- -->

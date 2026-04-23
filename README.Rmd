@@ -26,7 +26,7 @@ dir.create("man/figures", recursive = TRUE, showWarnings = FALSE)
 
 ```{r pkg, include = FALSE}
 library(whopals)
-library(ggplot2)
+library(tidyverse)
 ```
 
 # whopals
@@ -36,10 +36,9 @@ This package brings the official [WHO Data Design Language](https://srhdteuwpubs
 ```r
 pak::pak("finlaycampbell/whopals")
 ```
+## Palettes
 
 Palettes are exposed as `whopals::pal_*` functions. Use the `theme` argument to specify a light or dark theme, `component` to specify the plot component such as text or base, and `variant` to select a palette variant where available. The available palettes are displayed below.
-
-***
 
 ```{r plot-helper, include = FALSE}
 # Dark canvas + white type: readable on GitHub; knitr uses transparent device bg.
@@ -176,14 +175,11 @@ plot_pal(whopals::pal_functional("dark"))
 plot_pal(whopals::pal_selection(theme = "dark"))
 ```
 
-## Example column chart
+## Themes
 
-The figures below give an example of the color palettes using the light and dark themes.
+The basic design guidelines are implemented as `ggplot2` themes and displayed below.
 	
 ```{r example-col-data, echo=FALSE}
-
-library(whopals)
-library(tidyverse)
 df <- tibble(
   who_region = c("afro", "amro", "emro", "euro", "searo", "wpro"),
   data = replicate(
@@ -202,6 +198,8 @@ df <- tibble(
   unnest(data) |>
   unnest_wider(cases)
 ```
+
+**`theme_who_dark()`**
 
 ```{r example-col-dark, echo=FALSE, fig.height = 4.2, fig.width = 8}
 p <- ggplot(df, aes(x = day)) +
@@ -225,6 +223,8 @@ p <- ggplot(df, aes(x = day)) +
   theme(legend.position = "none")
 p
 ```
+
+**`theme_who_light()`**
 
 ```{r example-col-light, echo=FALSE, fig.height = 4.2, fig.width = 8}
 p +
