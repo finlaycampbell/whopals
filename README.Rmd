@@ -231,3 +231,93 @@ p +
   theme_who_light() +
   theme(legend.position = "none")
 ```
+
+## Fonts
+
+The WHO Data Design Language recommends use of the [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans) font ([download here](https://fonts.google.com/download?family=Noto%20Sans)). After unzipping, the files can be installed by right-mouse click: `Install` on the `ttf` files. This font will be automatically used by the `theme_who_*` functions if available.
+
+```{r fonts-specimen, echo=FALSE, fig.height = 2, fig.width = 7}
+lor <- paste(
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+  "tempor incididunt ut labore et dolore magna aliqua."
+)
+has_noto <- isTRUE(
+  tryCatch(
+    any(
+      tolower(systemfonts::system_fonts()$family) == "noto sans",
+      na.rm = TRUE
+    ),
+    error = function(e) FALSE
+  )
+)
+fam <- if (has_noto) "Noto Sans" else ""
+ggplot2::ggplot() +
+  ggplot2::coord_cartesian(
+    xlim = c(0, 1),
+    ylim = c(0, 1),
+    expand = FALSE,
+    clip = "off"
+  ) +
+  ggplot2::annotate(
+    "text",
+    x = 0.02,
+    y = 0.97,
+    hjust = 0,
+    vjust = 1,
+    family = fam,
+    fontface = "bold",
+    size = 5.5,
+    label = "Lorem ipsum dolor sit amet"
+  ) +
+  ggplot2::annotate(
+    "text",
+    x = 0.02,
+    y = 0.78,
+    hjust = 0,
+    vjust = 1,
+    family = fam,
+    fontface = "plain",
+    size = 4.2,
+    label = lor
+  ) +
+  ggplot2::annotate(
+    "text",
+    x = 0.02,
+    y = 0.58,
+    hjust = 0,
+    vjust = 1,
+    family = fam,
+    fontface = "italic",
+    size = 3.8,
+    label = lor
+  ) +
+  ggplot2::annotate(
+    "text",
+    x = 0.02,
+    y = 0.40,
+    hjust = 0,
+    vjust = 1,
+    family = fam,
+    fontface = "bold.italic",
+    size = 3.4,
+    label = "Lorem ipsum — bold italic"
+  ) +
+  ggplot2::annotate(
+    "text",
+    x = 0.02,
+    y = 0.24,
+    hjust = 0,
+    vjust = 1,
+    family = fam,
+    fontface = "plain",
+    size = 2.6,
+    label = paste(
+      "Small:",
+      "ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+    )
+  ) +
+  ggplot2::theme_void() +
+  ggplot2::theme(plot.margin = ggplot2::margin(10, 12, 10, 12))
+```
+
+**Note:** This font cannot be rendered using the default devices, instead use `ragg::agg_*` as the device for non-vectorised images or `grDevices::cairo_pdf` for vectorised images. For convenience, this functionality is implemented within function `save_plot`.

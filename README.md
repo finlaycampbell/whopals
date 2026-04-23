@@ -90,3 +90,19 @@ displayed below.
 **`theme_who_light()`**
 
 ![](man/figures/README-example-col-light-1.png)<!-- -->
+
+## Fonts
+
+The WHO Data Design Language recommends use of the [Noto
+Sans](https://fonts.google.com/noto/specimen/Noto+Sans) font ([download
+here](https://fonts.google.com/download?family=Noto%20Sans)). After
+unzipping, the files can be installed by right-mouse click: `Install` on
+the `ttf` files. This font will be automatically used by the
+`theme_who_*` functions if available.
+
+![](man/figures/README-fonts-specimen-1.png)<!-- -->
+
+**Note:** This font cannot be rendered using the default devices,
+instead use `ragg::agg_*` as the device for non-vectorised images or
+`grDevices::cairo_pdf` for vectorised images. For convenience, this
+functionality is implemented within function `save_plot`.

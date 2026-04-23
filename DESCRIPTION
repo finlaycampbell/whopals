@@ -9,12 +9,13 @@ Description: Named colour vectors from the WHO data design language, derived
 License: GPL-3
 Encoding: UTF-8
 Imports:
-    ggplot2 (>= 3.4.0)
+    ggplot2 (>= 3.4.0),
+    ragg (>= 1.2.0),
+    systemfonts
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Suggests:
     knitr (>= 1.40),
-    ragg,
     pkgload (>= 1.3.0),
     rmarkdown (>= 2.20),
     testthat (>= 3.0.0)

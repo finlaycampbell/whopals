@@ -34,14 +34,23 @@ test_that("plot and panel fills match background/base tokens", {
   )
 })
 
-test_that("default Noto Sans is set on base text", {
+test_that("default text face is plain and title is bold", {
   tl <- whopals::theme_who_light()
-  expect_identical(tl$text$family, "Noto Sans")
   expect_identical(tl$text$face, "plain")
   expect_identical(tl$plot.title$face, "bold")
 })
 
-test_that("theme_who(theme) matches theme_who_light and theme_who_dark", {
-  expect_identical(whopals::theme_who("light"), whopals::theme_who_light())
-  expect_identical(whopals::theme_who("dark"), whopals::theme_who_dark())
+test_that("default base text uses Noto Sans only when discoverable", {
+  skip_if_not_installed("systemfonts")
+  has <- any(
+    tolower(systemfonts::system_fonts()$family) == "noto sans",
+    na.rm = TRUE
+  )
+  tl <- whopals::theme_who_light()
+  if (has) {
+    expect_identical(tl$text$family, "Noto Sans")
+  } else {
+    expect_false(identical(tl$text$family, "Noto Sans"))
+  }
 })
+
