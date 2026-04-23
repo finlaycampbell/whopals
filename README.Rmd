@@ -238,7 +238,7 @@ The WHO Data Design Language recommends use of the [Noto Sans](https://fonts.goo
 
 ```{r fonts-specimen, echo=FALSE, fig.height = 2, fig.width = 7}
 lor <- paste(
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit,",
   "tempor incididunt ut labore et dolore magna aliqua."
 )
 has_noto <- isTRUE(
@@ -251,6 +251,7 @@ has_noto <- isTRUE(
   )
 )
 fam <- if (has_noto) "Noto Sans" else ""
+txt_col <- unname(whopals::pal_text(theme = "dark"))
 ggplot2::ggplot() +
   ggplot2::coord_cartesian(
     xlim = c(0, 1),
@@ -267,6 +268,7 @@ ggplot2::ggplot() +
     family = fam,
     fontface = "bold",
     size = 5.5,
+    colour = txt_col,
     label = "Lorem ipsum dolor sit amet"
   ) +
   ggplot2::annotate(
@@ -278,6 +280,7 @@ ggplot2::ggplot() +
     family = fam,
     fontface = "plain",
     size = 4.2,
+    colour = txt_col,
     label = lor
   ) +
   ggplot2::annotate(
@@ -289,6 +292,7 @@ ggplot2::ggplot() +
     family = fam,
     fontface = "italic",
     size = 3.8,
+    colour = txt_col,
     label = lor
   ) +
   ggplot2::annotate(
@@ -300,7 +304,8 @@ ggplot2::ggplot() +
     family = fam,
     fontface = "bold.italic",
     size = 3.4,
-    label = "Lorem ipsum — bold italic"
+    colour = txt_col,
+    label = "Lorem ipsum"
   ) +
   ggplot2::annotate(
     "text",
@@ -311,10 +316,8 @@ ggplot2::ggplot() +
     family = fam,
     fontface = "plain",
     size = 2.6,
-    label = paste(
-      "Small:",
-      "ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
-    )
+    colour = txt_col,
+    label = "ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
   ) +
   ggplot2::theme_void() +
   ggplot2::theme(plot.margin = ggplot2::margin(10, 12, 10, 12))
