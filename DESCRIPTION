@@ -8,11 +8,13 @@ Description: Named colour vectors from the WHO data design language, derived
   from embedded design tokens (charts and UI).
 License: GPL-3
 Encoding: UTF-8
+Imports:
+    ggplot2 (>= 3.4.0)
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Suggests:
-    ggplot2 (>= 3.4.0),
     knitr (>= 1.40),
+    ragg,
     pkgload (>= 1.3.0),
     rmarkdown (>= 2.20),
     testthat (>= 3.0.0)
