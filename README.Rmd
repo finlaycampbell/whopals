@@ -191,7 +191,7 @@ df <- tibble(
     tibble(
       day = ymd("2026-01-01") + seq_len(100),
       cases = map(
-        exp(cumsum(seq(runif(1, 0.05, 0.2), runif(1, -0.02, 0.05), length = 100))),
+        exp(cumsum(seq(runif(1, 0.05, 0.15), runif(1, -0.02, 0.05), length = 100))),
         ~ quantile(rpois(100, .x), c(0.025, 0.5, 0.975)) |>
           setNames(c("lower", "mid", "upper"))
       )
@@ -203,7 +203,7 @@ df <- tibble(
   unnest_wider(cases)
 ```
 
-```{r example-col-dark, echo=FALSE, fig.height = 3.6, fig.width = 8}
+```{r example-col-dark, echo=FALSE, fig.height = 4.2, fig.width = 8}
 p <- ggplot(df, aes(x = day)) +
   geom_ribbon(aes(ymin = lower, ymax = upper, fill = who_region), alpha = 0.5) +
   geom_line(aes(y = mid, color = who_region)) +  
@@ -226,6 +226,6 @@ p <- ggplot(df, aes(x = day)) +
 p
 ```
 
-```{r example-col-light, echo=FALSE, fig.height = 3.6, fig.width = 8}
+```{r example-col-light, echo=FALSE, fig.height = 4.2, fig.width = 8}
 p + theme_who_light() + theme(legend.position = "none")
 ```
