@@ -191,7 +191,7 @@ df <- tibble(
     tibble(
       day = ymd("2026-01-01") + seq_len(100),
       cases = map(
-        exp(cumsum(seq(runif(1, 0.05, 0.15), runif(1, -0.02, 0.05), length = 100))),
+        exp(cumsum(seq(runif(1, 0.05, 0.1), runif(1, -0.02, 0.02), length = 100))),
         ~ quantile(rpois(100, .x), c(0.025, 0.5, 0.975)) |>
           setNames(c("lower", "mid", "upper"))
       )
@@ -220,12 +220,14 @@ p <- ggplot(df, aes(x = day)) +
     y = "Daily number of cases"
   ) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
-  scale_x_date(expand = expansion(mult = c(0, 0))) +
+  scale_x_date(expand = expansion(mult = c(0, 0.02))) +
   theme_who_dark() +
   theme(legend.position = "none")
 p
 ```
 
 ```{r example-col-light, echo=FALSE, fig.height = 4.2, fig.width = 8}
-p + theme_who_light() + theme(legend.position = "none")
+p +
+  theme_who_light() +
+  theme(legend.position = "none")
 ```

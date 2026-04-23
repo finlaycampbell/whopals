@@ -23,7 +23,8 @@
   wline <- ggplot2::element_line(color = pal_foreground("weakest", theme))
   dline <- ggplot2::element_line(
     color = pal_foreground("weaker", theme),
-    linetype = 3
+    linetype = 3,
+    linewidth = 0.05
   )
 
   ggplot2::theme_minimal(base_size = base_size, base_family = base_family) +
@@ -36,10 +37,15 @@
       legend.title = text,
       plot.background = background,
       panel.background = background,
+      panel.border = element_rect(
+        color = pal_foreground("weaker", theme),
+        linetype = 3,
+        linewidth = 0.05
+      ),
       strip.background = background,
       axis.ticks = wline,
       axis.line.x.bottom = line,
-      axis.line.y = dline,
+      axis.line.y = element_blank(),
       panel.grid.major = dline,
       panel.grid.minor = ggplot2::element_blank()
     )
