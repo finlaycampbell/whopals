@@ -102,7 +102,10 @@ the `ttf` files. This font will be automatically used by the
 
 ![](man/figures/README-fonts-specimen-1.png)<!-- -->
 
-**Note:** This font cannot be rendered using the default devices,
-instead use `ragg::agg_*` as the device for non-vectorised images or
-`grDevices::cairo_pdf` for vectorised images. For convenience, this
-functionality is implemented within function `save_plot`.
+## Saving
+
+The recommended font cannot be rendered using default devices and
+require `ragg::agg_*` as the device for non-vectorised images or
+`grDevices::cairo_pdf` for vectorised images. This functionality is
+implemented within function `save_plot`, which acts as a wrapper for
+`ggplot2::ggsave` with sensible defaults.
