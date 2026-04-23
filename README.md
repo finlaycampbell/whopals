@@ -3,7 +3,8 @@
 
 <!-- badges: start -->
 
-[![Check](https://github.com/finlaycampbell/whopals/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/finlaycampbell/whopals/actions/workflows/R-CMD-check.yaml)
+<!-- [![Check](https://github.com/finlaycampbell/whopals/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/finlaycampbell/whopals/actions/workflows/R-CMD-check.yaml) -->
+
 <!-- badges: end -->
 
 # *whopals: WHO Data Design in R*
