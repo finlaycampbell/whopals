@@ -24,7 +24,7 @@
   dline <- ggplot2::element_line(
     color = pal_foreground("weakest", theme),
     linetype = 3,
-    linewidth = 0.5
+    linewidth = ggplot2::rel(0.25)
   )
 
   ggplot2::theme_minimal(base_size = base_size, base_family = base_family) +
@@ -38,11 +38,6 @@
       plot.background = background,
       panel.background = background,
       panel.border = element_blank(),
-      # panel.border = element_rect(
-      #   color = pal_foreground("weaker", theme),
-      #   linetype = 3,
-      #   linewidth = 1
-      # ),
       strip.background = background,
       axis.ticks = wline,
       axis.line.x.bottom = line,
