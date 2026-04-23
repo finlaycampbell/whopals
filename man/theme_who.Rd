@@ -3,25 +3,16 @@
 \name{theme_who_light}
 \alias{theme_who_light}
 \alias{theme_who_dark}
-\alias{theme_who}
 \title{WHO ggplot2 themes (light / dark)}
 \usage{
 theme_who_light(base_size = 12, base_family = "Noto Sans")
 
 theme_who_dark(base_size = 12, base_family = "Noto Sans")
-
-theme_who(
-  theme = c("light", "dark"),
-  base_size = 12,
-  base_family = "Noto Sans"
-)
 }
 \arguments{
 \item{base_size}{Base font size in pt.}
 
 \item{base_family}{Primary font family (default \code{"Noto Sans"}).}
-
-\item{theme}{Either \code{"light"} or \code{"dark"}.}
 }
 \value{
 A \code{\link[ggplot2:theme]{ggplot2::theme()}} object.

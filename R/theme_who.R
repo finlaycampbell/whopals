@@ -24,7 +24,7 @@
   dline <- ggplot2::element_line(
     color = pal_foreground("weakest", theme),
     linetype = 3,
-    linewidth = ggplot2::rel(0.25)
+    linewidth = ggplot2::rel(0.75)
   )
 
   ggplot2::theme_minimal(base_size = base_size, base_family = base_family) +
@@ -64,14 +64,4 @@ theme_who_light <- function(base_size = 12, base_family = "Noto Sans") {
 #' @export
 theme_who_dark <- function(base_size = 12, base_family = "Noto Sans") {
   .theme_who("dark", base_size = base_size, base_family = base_family)
-}
-
-#' @rdname theme_who
-#' @param theme Either `"light"` or `"dark"`.
-#' @export
-theme_who <- function(theme = c("light", "dark"),
-                      base_size = 12,
-                      base_family = "Noto Sans") {
-  theme <- match.arg(theme)
-  .theme_who(theme, base_size = base_size, base_family = base_family)
 }
