@@ -10,7 +10,7 @@
 # *whopals: WHO Data Design in R*
 
 This package brings the [WHO Data Design
-Language](https://srhdteuwpubsa.z6.web.core.windows.net/gho/data/design-language)
+Language](https://srhdteuwpubsa.z6.web.core.windows.net/gho/data/design-language/)
 into R. Install it using:
 
 ``` r
