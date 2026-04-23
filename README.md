@@ -3,10 +3,8 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/finlaycampbell/whopals/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/finlaycampbell/whopals/actions/workflows/R-CMD-check.yaml)
-<!-- badges: end -->
-
-# *whopals: WHO Data Design in R*
+[![Checks](https://github.com/finlaycampbell/whopals/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/finlaycampbell/whopals/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end --> \# *whopals: WHO Data Design in R*
 
 This package brings the [WHO Data Design
 Language](https://srhdteuwpubsa.z6.web.core.windows.net/gho/data/design-language/design-system/colors/)

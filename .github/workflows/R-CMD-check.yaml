@@ -11,6 +11,11 @@ name: R-CMD-check
 permissions:
   contents: read
 
+# Drop superseded runs when the same branch or PR gets a newer commit.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
