@@ -3,9 +3,14 @@
 
 # whopals
 
-This package brings the official [WHO Data Design
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/finlaycampbell/whopals/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/finlaycampbell/whopals/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
+This package brings the [WHO Data Design
 Language](https://srhdteuwpubsa.z6.web.core.windows.net/gho/data/design-language/design-system/colors/)
-colours into R. Install it using:
+into R. Install it using:
 
 ``` r
 pak::pak("finlaycampbell/whopals")
@@ -104,8 +109,8 @@ the `ttf` files. This font will be automatically used by the
 
 ## Saving
 
-The recommended font cannot be rendered using default devices and
-require `ragg::agg_*` as the device for non-vectorised images or
+The Noto Sans font cannot be rendered using default devices and requires
+`ragg::agg_*` as the device for non-vectorised images or
 `grDevices::cairo_pdf` for vectorised images. This functionality is
 implemented within function `save_plot`, which acts as a wrapper for
 `ggplot2::ggsave` with sensible defaults.

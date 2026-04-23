@@ -2,11 +2,10 @@ Package: whopals
 Title: WHO Data Design Language Colour Palettes
 Version: 0.0.0.9000
 Authors@R: c(
-    person("WHO", "Tools", email = "noreply@who.int", role = c("aut", "cre"))
+    person("Finlay", "Campbell", email = "campbellf@who.int", role = c("aut", "cre"))
   )
-Description: Named colour vectors from the WHO data design language, derived
-  from embedded design tokens (charts and UI).
-License: GPL-3
+Description: Bringing the WHO Data Design Language into R.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Imports:
     ggplot2 (>= 3.4.0),
