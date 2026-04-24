@@ -1,0 +1,5 @@
+^\.github$
+^LICENSE\.md$
+^README\.Rmd$
+^_quarto\.yml$
+^data-raw$
