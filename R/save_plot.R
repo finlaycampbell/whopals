@@ -54,7 +54,7 @@ save_plot <- function(plot, filename, width_cm = .word_body_width_cm(),
   }
   device <- switch(
     ext,
-    pdf = grDevices::cairo_pdf,
+    pdf = if (capabilities("cairo")) grDevices::cairo_pdf else grDevices::pdf,
     png = ragg::agg_png,
     jpg = ragg::agg_jpeg,
     jpeg = ragg::agg_jpeg,
