@@ -5,7 +5,7 @@ Authors@R: c(
     person("Finlay", "Campbell", email = "campbellf@who.int", role = c("aut", "cre"))
   )
 Description: Bringing the WHO Data Design Language into R.
-License: MIT + file LICENSE
+License: MIT
 Encoding: UTF-8
 Imports:
     ggplot2 (>= 3.4.0),
