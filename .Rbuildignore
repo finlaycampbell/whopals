@@ -3,3 +3,4 @@
 ^README\.Rmd$
 ^_quarto\.yml$
 ^data-raw$
+^data-raw/
